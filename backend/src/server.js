@@ -59,9 +59,9 @@ app.use(
 app.use("/api", limiter);
 
 const allowedOrigins = [
-  "https://bharat19express.com",
-  "https://www.bharat19express.com",
-  "https://admin.bharat19express.com",
+  "https://charchitrajnit.com",
+  "https://www.charchitrajnit.com",
+  "https://admin.charchitrajnit.com",
 ];
 
 app.use(
