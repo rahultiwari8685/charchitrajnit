@@ -116,14 +116,6 @@ function HomeTwo() {
                   </div>
                 )}
 
-                {/* <div className="col-md-6 col-lg-12 d-md-none d-lg-block">
-                  <div className="banner2 mb30 border-radious5">
-                    <Link to="/">
-                      <img src={banner2} alt="thumb" />
-                    </Link>
-                  </div>
-                </div> */}
-
                 <div className="col-md-6 col-lg-12">
                   <WidgetFinance />
                 </div>
@@ -132,7 +124,7 @@ function HomeTwo() {
           </div>
         </div>
       </div>
-      {/* <VideoNews /> */}
+
       <div className="mix3 mb30">
         <div className="container">
           <div className="row">
