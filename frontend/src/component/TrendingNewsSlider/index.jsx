@@ -13,7 +13,7 @@ const TrendingNewsSlider = () => {
   const getTrendingNews = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/news/trending?limit=3",
+        "https://api.charchitrajnit.com/api/news/trending?limit=3",
       );
 
       const data = await res.json();
@@ -57,7 +57,7 @@ const TrendingNewsSlider = () => {
             <div className="post_img">
               <div className="img_wrap">
                 <img
-                  src={`https://api.bharat19express.com/uploads/images/${item.thumbnail}`}
+                  src={`https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`}
                   alt={item.title}
                   style={{
                     width: "100%",

@@ -18,7 +18,7 @@ const TrendingNewsTwo = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `https://api.bharat19express.com/api/news/category/6ab5133ae0146bb0a4a80e48?limit=10&lang=${language}`,
+        `https://api.charchitrajnit.com/api/news/category/6ab5133ae0146bb0a4a80e48?limit=10&lang=${language}`,
       );
 
       if (!res.ok) {
@@ -69,7 +69,7 @@ const TrendingNewsTwo = () => {
   }
 
   const image = featuredNews.thumbnail
-    ? `https://api.bharat19express.com/uploads/images/${featuredNews.thumbnail}`
+    ? `https://api.charchitrajnit.com/uploads/images/${featuredNews.thumbnail}`
     : "";
 
   const newsUrl = `/news/${featuredNews.slug}`;

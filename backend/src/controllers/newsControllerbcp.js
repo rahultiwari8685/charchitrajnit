@@ -1252,10 +1252,10 @@ export const shareNews = async (req, res) => {
       return res.status(404).send("News not found");
     }
 
-    const frontendUrl = `https://www.bharat19express.com/news/${news.slug}`;
+    const frontendUrl = `https://www.charchitrajnit.com/news/${news.slug}`;
 
     const image = news.thumbnail
-      ? `https://api.bharat19express.com/uploads/images/${news.thumbnail}`
+      ? `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`
       : "";
 
     return res.render("share", {
@@ -1354,9 +1354,9 @@ export const newsMeta = async (req, res) => {
       return res.status(404).send("News not found");
     }
 
-    const image = `https://api.bharat19express.com/uploads/images/${news.thumbnail}`;
+    const image = `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`;
 
-    const url = `https://bharat19express.com/news/${news.slug}`;
+    const url = `https://charchitrajnit.com/news/${news.slug}`;
 
     res.send(`
 <!DOCTYPE html>

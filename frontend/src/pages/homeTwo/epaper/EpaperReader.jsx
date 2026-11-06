@@ -4,7 +4,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const EpaperReader = () => {
   const { id } = useParams();

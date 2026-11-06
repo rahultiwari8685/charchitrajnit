@@ -13,7 +13,7 @@ router.post("/image", upload.single("file"), (req, res) => {
   }
 
   return res.json({
-    location: `https://api.bharat19express.com/uploads/images/${req.file.filename}`,
+    location: `https://api.charchitrajnit.com/uploads/images/${req.file.filename}`,
   });
 });
 

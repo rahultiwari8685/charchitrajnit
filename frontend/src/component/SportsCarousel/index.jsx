@@ -25,7 +25,7 @@ const SportsCarousel = ({ dark, sportsNews }) => {
                   <div className="img_wrap">
                     <Link to={`/${item.categories?.[0]?.slug}/${item.slug}`}>
                       <img
-                        src={`https://api.bharat19express.com/uploads/images/${item.thumbnail}`}
+                        src={`https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`}
                         alt={item.title}
                         style={{
                           width: "100%",

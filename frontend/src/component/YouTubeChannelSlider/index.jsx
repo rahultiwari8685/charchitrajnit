@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const API_URL = "https://api.bharat19express.com/api/youtube/videos";
+const API_URL = "https://api.charchitrajnit.com/api/youtube/videos";
 
 const YouTubeChannelSlider = () => {
   const { i18n, t } = useTranslation();

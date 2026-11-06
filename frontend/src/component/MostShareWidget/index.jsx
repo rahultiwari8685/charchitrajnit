@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import FontAwesome from "../uiStyle/FontAwesome";
 import Slider from "../Slider";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const MostShareWidget = ({ title, dark }) => {
   const [news, setNews] = useState([]);

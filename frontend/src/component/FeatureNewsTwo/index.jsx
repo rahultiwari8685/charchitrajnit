@@ -17,7 +17,7 @@
 //       const language = i18n.resolvedLanguage || "en";
 
 //       const res = await fetch(
-//         `https://api.bharat19express.com/api/news/category/6ab3d6db40046655dd2db091?limit=10&lang=${language}`,
+//         `https://api.charchitrajnit.com/api/news/category/6ab3d6db40046655dd2db091?limit=10&lang=${language}`,
 //       );
 
 //       const data = await res.json();
@@ -87,7 +87,7 @@
 //               const category = item.categories?.[0];
 
 //               const image = item.thumbnail
-//                 ? `https://api.bharat19express.com/uploads/images/${item.thumbnail}`
+//                 ? `https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`
 //                 : "";
 
 //               return (
@@ -192,7 +192,7 @@ const FeatureNewsTwo = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `https://api.bharat19express.com/api/news/category/6ab3d6db40046655dd2db091?limit=10&lang=${language}`,
+        `https://api.charchitrajnit.com/api/news/category/6ab3d6db40046655dd2db091?limit=10&lang=${language}`,
       );
 
       if (!res.ok) {
@@ -270,7 +270,7 @@ const FeatureNewsTwo = () => {
             const category = item.categories?.[0];
 
             const image = item.thumbnail
-              ? `https://api.bharat19express.com/uploads/images/${item.thumbnail}`
+              ? `https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`
               : "";
 
             return (

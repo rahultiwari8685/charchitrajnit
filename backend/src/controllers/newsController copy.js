@@ -972,9 +972,9 @@
 //     res.render("share", {
 //       title: news.title,
 //       description: news.subtitle || news.metaDescription || "",
-//       image: `https://api.bharat19express.com/uploads/images/${news.thumbnail}`,
-//       url: `https://api.bharat19express.com/api/news/share/${news.slug}`,
-//       frontendUrl: `https://bharat19express.com/news/${news.slug}`,
+//       image: `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`,
+//       url: `https://api.charchitrajnit.com/api/news/share/${news.slug}`,
+//       frontendUrl: `https://charchitrajnit.com/news/${news.slug}`,
 //     });
 //   } catch (err) {
 //     res.status(500).send(err.message);
@@ -1049,8 +1049,8 @@
 //       return res.status(404).send("News not found");
 //     }
 
-//     const image = `https://api.bharat19express.com/uploads/images/${news.thumbnail}`;
-//     const url = `https://bharat19express.com/news/${news.slug}`;
+//     const image = `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`;
+//     const url = `https://charchitrajnit.com/news/${news.slug}`;
 
 //     res.send(`
 // <!DOCTYPE html>
@@ -2476,11 +2476,11 @@ export const shareNews = async (req, res) => {
 
       description: news.subtitle || news.metaDescription || "",
 
-      image: `https://api.bharat19express.com/uploads/images/${news.thumbnail}`,
+      image: `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`,
 
-      url: `https://api.bharat19express.com/api/news/share/${news.slug}`,
+      url: `https://api.charchitrajnit.com/api/news/share/${news.slug}`,
 
-      frontendUrl: `https://bharat19express.com/news/${news.slug}`,
+      frontendUrl: `https://charchitrajnit.com/news/${news.slug}`,
     });
   } catch (error) {
     res.status(500).send(error.message);
@@ -2593,9 +2593,9 @@ export const newsMeta = async (req, res) => {
       return res.status(404).send("News not found");
     }
 
-    const image = `https://api.bharat19express.com/uploads/images/${news.thumbnail}`;
+    const image = `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`;
 
-    const url = `https://bharat19express.com/news/${news.slug}`;
+    const url = `https://charchitrajnit.com/news/${news.slug}`;
 
     /*
       |--------------------------------------------------------------------------

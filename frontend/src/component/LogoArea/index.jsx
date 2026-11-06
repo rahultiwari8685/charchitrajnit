@@ -70,7 +70,7 @@ const LogoArea = ({ className, dark }) => {
   const getSiteSetting = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/site-settings",
+        "https://api.charchitrajnit.com/api/site-settings",
       );
 
       const result = await res.json();
@@ -86,7 +86,7 @@ const LogoArea = ({ className, dark }) => {
   const getBanner = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/advertisements",
+        "https://api.charchitrajnit.com/api/advertisements",
       );
 
       const result = await res.json();
@@ -117,7 +117,7 @@ const LogoArea = ({ className, dark }) => {
               <Link to="/">
                 {siteSetting?.headerLogo ? (
                   <img
-                    src={`https://api.bharat19express.com/uploads/images/${siteSetting.headerLogo}`}
+                    src={`https://api.charchitrajnit.com/uploads/images/${siteSetting.headerLogo}`}
                     alt={siteSetting.siteName}
                     style={{
                       width: "220px",
@@ -141,7 +141,7 @@ const LogoArea = ({ className, dark }) => {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src={`https://api.bharat19express.com/uploads/advertisements/${banner.image}`}
+                    src={`https://api.charchitrajnit.com/uploads/advertisements/${banner.image}`}
                     alt={banner.title}
                     style={{
                       width: "728px",

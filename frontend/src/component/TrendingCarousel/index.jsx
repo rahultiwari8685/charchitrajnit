@@ -25,7 +25,7 @@
 //           const category = item.categories?.[0];
 
 //           const image = item.thumbnail
-//             ? `https://api.bharat19express.com/uploads/images/${item.thumbnail}`
+//             ? `https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`
 //             : "";
 
 //           return (
@@ -159,7 +159,7 @@ const TrendingCarousel = ({ news = [] }) => {
           const category = item.categories?.[0];
 
           const image = item.thumbnail
-            ? `https://api.bharat19express.com/uploads/images/${item.thumbnail}`
+            ? `https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`
             : "";
 
           return (

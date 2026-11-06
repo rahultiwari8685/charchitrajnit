@@ -60,7 +60,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import FontAwesome from "../uiStyle/FontAwesome";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const socialPlatforms = [
   {

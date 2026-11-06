@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import FontAwesome from "../uiStyle/FontAwesome";
 import ModalVideo from "react-modal-video";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const VideoNews = () => {
   const { i18n, t } = useTranslation();

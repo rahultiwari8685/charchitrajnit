@@ -289,7 +289,7 @@ const PublishedNews = () => {
 
                   <CTableDataCell>
                     <a
-                      href={`https://bharat19express.com/${news.categories?.[0]?.slug}/${news.slug}`}
+                      href={`https://charchitrajnit.com/${news.categories?.[0]?.slug}/${news.slug}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{

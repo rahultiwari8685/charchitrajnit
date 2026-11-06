@@ -2,7 +2,7 @@
 // import PropTypes from "prop-types";
 // import { Link } from "react-router-dom";
 
-// const API = "https://api.bharat19express.com";
+// const API = "https://api.charchitrajnit.com";
 
 // const PostOnePagination = ({ newsId, className }) => {
 //   const [previous, setPrevious] = useState(null);
@@ -80,7 +80,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const PostOnePagination = ({ newsId, className }) => {
   const { t, i18n } = useTranslation();

@@ -18,7 +18,7 @@
 //       const language = i18n.resolvedLanguage || "en";
 
 //       const res = await fetch(
-//         `https://api.bharat19express.com/api/news/popular?limit=6&lang=${language}`,
+//         `https://api.charchitrajnit.com/api/news/popular?limit=6&lang=${language}`,
 //       );
 
 //       const data = await res.json();
@@ -50,7 +50,7 @@
 //         const newsUrl = `/news/${item.slug}`;
 
 //         const image = item.thumbnail
-//           ? `https://api.bharat19express.com/uploads/images/${item.thumbnail}`
+//           ? `https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`
 //           : "";
 
 //         const category = item.categories?.[0];
@@ -223,7 +223,7 @@ const BusinessNewsTwo = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `https://api.bharat19express.com/api/news/popular?limit=6&lang=${language}`,
+        `https://api.charchitrajnit.com/api/news/popular?limit=6&lang=${language}`,
       );
 
       if (!res.ok) {
@@ -265,7 +265,7 @@ const BusinessNewsTwo = () => {
         const newsUrl = `/news/${item.slug}`;
 
         const image = item.thumbnail
-          ? `https://api.bharat19express.com/uploads/images/${item.thumbnail}`
+          ? `https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`
           : "";
 
         const category = item.categories?.[0];

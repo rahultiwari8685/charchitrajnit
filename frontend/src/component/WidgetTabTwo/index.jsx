@@ -158,7 +158,7 @@
 // import classnames from "classnames";
 // import { Link } from "react-router-dom";
 
-// const API = "https://api.bharat19express.com";
+// const API = "https://api.charchitrajnit.com";
 
 // const getYoutubeId = (url) => {
 //   if (!url) return "";
@@ -452,7 +452,7 @@ import classnames from "classnames";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const getYoutubeId = (url) => {
   if (!url) return "";

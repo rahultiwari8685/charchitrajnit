@@ -13,7 +13,7 @@ export async function sendNotification(tokens, news) {
           title: "Top Headlines",
           body: news.title,
 
-          // imageUrl: `https://api.bharat19express.com/uploads/images/${news.thumbnail}`,
+          // imageUrl: `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`,
         },
 
         android: {
@@ -22,7 +22,7 @@ export async function sendNotification(tokens, news) {
           notification: {
             channelId: "breaking-news",
 
-            imageUrl: `https://api.bharat19express.com/uploads/images/${news.thumbnail}`,
+            imageUrl: `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`,
 
             sound: "default",
 
@@ -50,7 +50,7 @@ export async function sendNotification(tokens, news) {
           slug: news.slug,
           newsId: news._id.toString(),
 
-          image: `https://api.bharat19express.com/uploads/images/${news.thumbnail}`,
+          image: `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`,
 
           title: "Top Headlines",
 

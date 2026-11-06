@@ -27,11 +27,11 @@ function Privacy() {
               &quot;we&quot;, &quot;us&quot; or &quot;our&quot;), respects the
               privacy of visitors and users of{" "}
               <a
-                href="https://www.bharat19express.com"
+                href="https://www.charchitrajnit.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                www.bharat19express.com
+                www.charchitrajnit.com
               </a>
               .
             </p>
@@ -282,18 +282,18 @@ function Privacy() {
                 <p>
                   <strong>Website:</strong>{" "}
                   <a
-                    href="https://www.bharat19express.com"
+                    href="https://www.charchitrajnit.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    www.bharat19express.com
+                    www.charchitrajnit.com
                   </a>
                 </p>
 
                 <p>
                   <strong>Email:</strong>{" "}
-                  <a href="mailto:bharat19express@gmail.com">
-                    bharat19express@gmail.com
+                  <a href="mailto:charchitrajnit@gmail.com">
+                    charchitrajnit@gmail.com
                   </a>
                 </p>
 

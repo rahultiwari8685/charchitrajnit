@@ -35,7 +35,7 @@ function Home() {
   const getEntertainmentNews = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/news/category/6ab5133ae0146bb0a4a80e48?limit=4",
+        "https://api.charchitrajnit.com/api/news/category/6ab5133ae0146bb0a4a80e48?limit=4",
       );
 
       const data = await res.json();
@@ -57,7 +57,7 @@ function Home() {
   const getBusinessNews = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/news/category/6ab3e06740046655dd2db1e5?limit=2",
+        "https://api.charchitrajnit.com/api/news/category/6ab3e06740046655dd2db1e5?limit=2",
       );
 
       const data = await res.json();
@@ -79,7 +79,7 @@ function Home() {
   const getAdvertisements = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/advertisements",
+        "https://api.charchitrajnit.com/api/advertisements",
       );
 
       const data = await res.json();
@@ -137,7 +137,7 @@ function Home() {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src={`https://api.bharat19express.com/uploads/advertisements/${banners.homepage_middle.image}`}
+                      src={`https://api.charchitrajnit.com/uploads/advertisements/${banners.homepage_middle.image}`}
                       alt={banners.homepage_middle.title}
                       className="img-fluid"
                     />
@@ -166,7 +166,7 @@ function Home() {
                         rel="noopener noreferrer"
                       >
                         <img
-                          src={`https://api.bharat19express.com/uploads/advertisements/${banners.sidebar.image}`}
+                          src={`https://api.charchitrajnit.com/uploads/advertisements/${banners.sidebar.image}`}
                           alt={banners.sidebar.title}
                           className="img-fluid"
                         />
@@ -200,7 +200,7 @@ function Home() {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src={`https://api.bharat19express.com/uploads/advertisements/${banners.sidebar.image}`}
+                      src={`https://api.charchitrajnit.com/uploads/advertisements/${banners.sidebar.image}`}
                       alt={banners.sidebar.title}
                       className="img-fluid"
                     />

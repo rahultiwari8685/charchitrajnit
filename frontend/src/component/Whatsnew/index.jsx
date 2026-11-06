@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import FontAwesome from "../uiStyle/FontAwesome";
 import Slider from "../Slider";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const Whatsnew = ({ className, title }) => {
   const { i18n, t } = useTranslation();

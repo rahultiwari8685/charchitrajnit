@@ -14,7 +14,7 @@
 
 // fs.mkdirSync(uploadDir, { recursive: true });
 
-// const API_BASE_URL = "https://api.bharat19express.com";
+// const API_BASE_URL = "https://api.charchitrajnit.com";
 
 // const allowedMimeTypes = [
 //   "image/jpeg",
@@ -201,7 +201,7 @@ const uploadDir = path.join(__dirname, "../../uploads/gallery");
 
 fs.mkdirSync(uploadDir, { recursive: true });
 
-const API_BASE_URL = "https://api.bharat19express.com";
+const API_BASE_URL = "https://api.charchitrajnit.com";
 
 const allowedMimeTypes = [
   "image/jpeg",

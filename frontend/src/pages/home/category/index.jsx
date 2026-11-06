@@ -13,7 +13,7 @@
 // // Image
 // import banner2 from "../../../assets/img/ad/ad-2.jpg";
 
-// const API = "https://api.bharat19express.com";
+// const API = "https://api.charchitrajnit.com";
 
 // function Category() {
 //   const { categoryId } = useParams();
@@ -137,7 +137,7 @@ import BannerSection from "../../../component/BannerSection";
 
 import banner2 from "../../../assets/img/ad/ad-2.jpg";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 function Category() {
   const { categoryId } = useParams();

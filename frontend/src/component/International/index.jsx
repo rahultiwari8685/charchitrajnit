@@ -3,7 +3,7 @@ import FontAwesome from "../uiStyle/FontAwesome";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 // National category ID
 const NATIONAL_CATEGORY_ID = "6ab3e06740046655dd2db1e5";

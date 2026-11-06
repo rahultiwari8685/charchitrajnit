@@ -15,7 +15,7 @@ const FeatureNews = ({ className }) => {
   const getPopularNews = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/news/getAllNews?limit=10",
+        "https://api.charchitrajnit.com/api/news/getAllNews?limit=10",
       );
 
       const data = await res.json();
@@ -80,7 +80,7 @@ const FeatureNews = ({ className }) => {
                     <div className="post_img gradient1">
                       <Link to={`/${item.categories?.[0]?.slug}/${item.slug}`}>
                         <img
-                          src={`https://api.bharat19express.com/uploads/images/${item.thumbnail}`}
+                          src={`https://api.charchitrajnit.com/uploads/images/${item.thumbnail}`}
                           alt={item.title}
                           style={{
                             width: "100%",

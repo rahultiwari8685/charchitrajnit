@@ -38,7 +38,7 @@ app.get("/news/:slug", async (req, res) => {
     }
 
     const { data } = await axios.get(
-      `https://api.bharat19express.com/api/news/slug/${encodeURIComponent(oldSlug)}`,
+      `https://api.charchitrajnit.com/api/news/slug/${encodeURIComponent(oldSlug)}`,
     );
 
     if (!data.status || !data.data) {
@@ -48,7 +48,7 @@ app.get("/news/:slug", async (req, res) => {
     const news = data.data;
 
     const image = news.thumbnail
-      ? `https://api.bharat19express.com/uploads/images/${news.thumbnail}`
+      ? `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`
       : "";
 
     let html = baseHtml;
@@ -62,7 +62,7 @@ app.get("/news/:slug", async (req, res) => {
 <meta property="og:title" content="${news.title}">
 <meta property="og:description" content="${news.metaDescription || news.subtitle || ""}">
 <meta property="og:image" content="${image}">
-<meta property="og:url" content="https://bharat19express.com/news/${news.slug}">
+<meta property="og:url" content="https://charchitrajnit.com/news/${news.slug}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${news.title}">

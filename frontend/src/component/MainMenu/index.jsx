@@ -7,7 +7,7 @@ import SearchModal from "../SearchModal";
 import SidebarMenu from "../SidebarMenu";
 
 const MainMenu = ({ className, dark }) => {
-  const API = "https://api.bharat19express.com";
+  const API = "https://api.charchitrajnit.com";
 
   const [menuItems, setMenuItems] = useState([]);
 

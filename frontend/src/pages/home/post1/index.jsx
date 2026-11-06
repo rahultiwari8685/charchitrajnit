@@ -48,7 +48,7 @@ const decodeHtmlEntities = (value = "") => {
 };
 
 function Post1() {
-  const API = "https://api.bharat19express.com";
+  const API = "https://api.charchitrajnit.com";
 
   const { categorySlug, slug } = useParams();
   const [news, setNews] = useState(null);
@@ -70,7 +70,7 @@ useEffect(() => {
       }
 
       const response = await fetch(
-        "https://api.bharat19express.com/api/auth/verify-editor",
+        "https://api.charchitrajnit.com/api/auth/verify-editor",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -119,7 +119,7 @@ useEffect(() => {
   const getAdvertisements = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/advertisements",
+        "https://api.charchitrajnit.com/api/advertisements",
       );
 
       const data = await res.json();
@@ -149,13 +149,13 @@ useEffect(() => {
   }
 
 
-    const shareUrl = `https://api.bharat19express.com/api/news/share/${news?.slug || ""}`;
+    const shareUrl = `https://api.charchitrajnit.com/api/news/share/${news?.slug || ""}`;
 
     const shareTitle = decodeHtmlEntities(news?.title || "");
 
     const shareImage = news?.thumbnail
       ? `${API}/uploads/images/${news.thumbnail}`
-      : "https://bharat19express.com/default-news-image.jpg";
+      : "https://charchitrajnit.com/default-news-image.jpg";
 
   const cleanContent = news?.content
     ?.replace(/style="[^"]*"/g, "")
@@ -348,7 +348,7 @@ useEffect(() => {
 {canEditNews && (
   <div className="edit-news-wrapper">
     <a
-      href={`https://admin.bharat19express.com/UpdateNews/${news._id}`}
+      href={`https://admin.charchitrajnit.com/UpdateNews/${news._id}`}
       className="edit-news-button"
       target="_blank"
       rel="noopener noreferrer"
@@ -393,7 +393,7 @@ useEffect(() => {
           rel="noopener noreferrer"
         >
           <img
-            src={`https://api.bharat19express.com/uploads/advertisements/${banners.sidebar.image}`}
+            src={`https://api.charchitrajnit.com/uploads/advertisements/${banners.sidebar.image}`}
             alt={banners.sidebar.title}
             className="img-fluid"
           />

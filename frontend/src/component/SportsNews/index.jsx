@@ -14,7 +14,7 @@ const SportsNews = ({ dark }) => {
   const getSportsNews = async () => {
     try {
       const res = await fetch(
-        "https://api.bharat19express.com/api/news/category/6ab51bfc302ad805145eb3ad?limit=10",
+        "https://api.charchitrajnit.com/api/news/category/6ab51bfc302ad805145eb3ad?limit=10",
       );
 
       const data = await res.json();
@@ -53,7 +53,7 @@ const SportsNews = ({ dark }) => {
                 <div className="post_img">
                   <Link to={`/news/${featured.slug}`}>
                     <img
-                      src={`https://api.bharat19express.com/uploads/images/${featured.thumbnail}`}
+                      src={`https://api.charchitrajnit.com/uploads/images/${featured.thumbnail}`}
                       alt={featured.title}
                       style={{
                         width: "100%",

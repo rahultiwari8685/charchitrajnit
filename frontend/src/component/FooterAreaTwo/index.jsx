@@ -88,7 +88,7 @@
 //               <div className="row">
 //                 <div className="col-lg-6">
 //                   <h3 className="widget-title">
-//                     {t("appDownload", "Bharat19Express app download")}
+//                     {t("appDownload", "charchitrajnit app download")}
 //                   </h3>
 
 //                   <p>
@@ -136,7 +136,7 @@ import { useTranslation } from "react-i18next";
 import FooterCopyright from "../FooterCopyright";
 import FontAwesome from "../uiStyle/FontAwesome";
 
-const API = "https://api.bharat19express.com";
+const API = "https://api.charchitrajnit.com";
 
 const FooterAreaTwo = () => {
   const { t } = useTranslation();
@@ -268,7 +268,7 @@ const FooterAreaTwo = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <h3 className="widget-title">
-                    {t("appDownload", "Bharat19Express app download")}
+                    {t("appDownload", "charchitrajnit app download")}
                   </h3>
 
                   <p>
