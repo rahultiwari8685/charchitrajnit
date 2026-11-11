@@ -25,7 +25,7 @@ const YOUTUBE_CHANNELS = [
     channelId: "UCkJQAejO5Zx1TaQzzA_3Hvg",
   },
   {
-    name: "भारत 19 एक्सप्रेस",
+    name: "चर्चित राजनीति",
     channelId: "UCygk_AnahPPNje9H3NLK1tA",
   },
 ];
