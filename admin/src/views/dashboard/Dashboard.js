@@ -357,7 +357,7 @@ const Dashboard = () => {
       >
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div className="small mb-2" style={{ color: '#bfdbfe' }}>
-            BHARAT 19 EXPRESS · ADMIN PANEL
+            Charchit Rajnit · ADMIN PANEL
           </div>
           <h2 className="fw-bold mb-2">
             Welcome Back, <span style={{ color: '#fb7185' }}>Admin!</span>

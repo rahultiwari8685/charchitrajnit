@@ -1286,11 +1286,11 @@ export const shareNews = async (req, res) => {
       : "";
 
     return res.render("share", {
-      title: news.title || "Bharat 19 Express",
+      title: news.title || "Charchit Rajnit",
       description:
         news.subtitle ||
         news.metaDescription ||
-        "Latest news from Bharat 19 Express",
+        "Latest news from Charchit Rajnit",
       image,
       url: frontendUrl,
       frontendUrl,

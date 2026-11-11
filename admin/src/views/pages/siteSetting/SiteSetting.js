@@ -381,7 +381,7 @@ const SiteSetting = () => {
             <CCol md={12}>
               <CFormInput
                 label="Copyright"
-                placeholder="© 2026 Bharat 19 Express. All Rights Reserved."
+                placeholder="© 2026 Charchit Rajnit. All Rights Reserved."
                 {...register('copyright')}
               />
             </CCol>

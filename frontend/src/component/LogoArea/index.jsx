@@ -126,7 +126,7 @@ const LogoArea = ({ className, dark }) => {
                     }}
                   />
                 ) : (
-                  <h3>Bharat 19 Express</h3>
+                  <h3>Charchit Rajnit</h3>
                 )}
               </Link>
             </div>

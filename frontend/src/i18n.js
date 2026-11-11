@@ -35,7 +35,7 @@ const resources = {
 
       
       footerDescription:
-        "Bharat 19 Express is a trusted Hindi news platform. Our aim is to deliver important news to you in a simple, clear and fast way.",
+        "Charchit Rajnit is a trusted Hindi news platform. Our aim is to deliver important news to you in a simple, clear and fast way.",
       letsTalk: "Let's Talk",
       letsChat: "Let's Chat",
       headquarters: "Headquarters",
@@ -82,10 +82,10 @@ videosNews: "Video News",
       seeMore: "See More",
 
       about: {
-        title: "About Bharat 19 Express",
-        heading: "Bharat 19 Express",
+        title: "About Charchit Rajnit",
+        heading: "Charchit Rajnit",
         intro:
-          "Bharat 19 Express is a trusted Hindi news platform. Our aim is to deliver important news to you in a simple, clear and fast way.",
+          "Charchit Rajnit is a trusted Hindi news platform. Our aim is to deliver important news to you in a simple, clear and fast way.",
         missionTitle: "Our Mission",
         mission:
           "Our mission is to provide trustworthy journalism, factual reporting and real-time updates covering Politics, National, International, Sports, Entertainment, Business, Technology and Local News.",
@@ -112,10 +112,10 @@ videosNews: "Video News",
       epaper: "Epaper",
       gallery: "Gallery",
       subscribe: "Subscribe",
-      channelNation: "Bharat 19 Express Nation",
-      channelRegional: "Bharat 19 Express Regional",
+      channelNation: "Charchit Rajnit Nation",
+      channelRegional: "Charchit Rajnit Regional",
       channelEntertainment: "Bharat 19 Entertainment",
-      channelMain: "Bharat 19 Express",
+      channelMain: "Charchit Rajnit",
       copyright: "Copyright",
       allRightsReserved: "All Rights Reserved",
       developedBy: "Developed By",

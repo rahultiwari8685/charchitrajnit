@@ -584,11 +584,11 @@ border: "1px solid #dddddd",
                 >
                   {[
                     {
-                      label: t("channelNation", "Bharat 19 Express Nation"),
+                      label: t("channelNation", "Charchit Rajnit Nation"),
                       url: "https://www.youtube.com/channel/UC0lg7tqrUdlky_u1Wug7uEw",
                     },
                     {
-                      label: t("channelRegional", "Bharat 19 Express Regional"),
+                      label: t("channelRegional", "Charchit Rajnit Regional"),
                       url: "https://www.youtube.com/channel/UC7_OlirbGWvmG0-0Nc3WedA",
                     },
                     {
@@ -599,7 +599,7 @@ border: "1px solid #dddddd",
                       url: "https://www.youtube.com/channel/UCkJQAejO5Zx1TaQzzA_3Hvg",
                     },
                     {
-                      label: t("channelMain", "Bharat 19 Express"),
+                      label: t("channelMain", "Charchit Rajnit"),
                       url: "https://www.youtube.com/channel/UCygk_AnahPPNje9H3NLK1tA",
                     },
                   ].map((channel) => (

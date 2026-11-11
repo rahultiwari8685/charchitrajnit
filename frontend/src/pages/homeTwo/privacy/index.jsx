@@ -15,14 +15,14 @@ function Privacy() {
         <div className="container">
           <article className="privacy-policy-content">
             <header className="privacy-policy-header">
-              <h1>Privacy Policy – Bharat 19 Express</h1>
+              <h1>Privacy Policy – Charchit Rajnit</h1>
               <p className="privacy-last-updated">
                 <strong>Last Updated:</strong> {lastUpdated}
               </p>
             </header>
 
             <p>
-              Bharat 19 Express, a media initiative of Page 19 Express Media
+              Charchit Rajnit, a media initiative of Page 19 Express Media
               &amp; Advertisement Private Limited (&quot;Company&quot;,
               &quot;we&quot;, &quot;us&quot; or &quot;our&quot;), respects the
               privacy of visitors and users of{" "}
@@ -99,7 +99,7 @@ function Privacy() {
             <section>
               <h2>3. Newsletters and Communications</h2>
               <p>
-                Bharat 19 Express may introduce email newsletters, news alerts
+                Charchit Rajnit may introduce email newsletters, news alerts
                 and publication updates.
               </p>
               <p>
@@ -147,7 +147,7 @@ function Privacy() {
             <section>
               <h2>5. Magazine Subscriptions and Delivery</h2>
               <p>
-                Bharat 19 Express publishes magazine content. Paid magazine
+                Charchit Rajnit publishes magazine content. Paid magazine
                 subscription and delivery facilities may be introduced or
                 expanded separately.
               </p>
@@ -220,7 +220,7 @@ function Privacy() {
                 platforms and social media services.
               </p>
               <p>
-                Bharat 19 Express is not responsible for the privacy practices
+                Charchit Rajnit is not responsible for the privacy practices
                 or content of independently operated third-party websites.
               </p>
               <p>

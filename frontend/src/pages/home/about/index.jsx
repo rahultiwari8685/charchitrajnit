@@ -13,7 +13,7 @@ function About() {
         <div className="container">
           <article className="about-page-content">
             <header className="about-page-header">
-              <h1>About Us – Bharat 19 Express</h1>
+              <h1>About Us – Charchit Rajnit</h1>
               <p className="about-tagline">
                 Independent Journalism | Credible Information | Connecting
                 Communities
@@ -21,13 +21,13 @@ function About() {
             </header>
 
             <p>
-              Welcome to Bharat 19 Express, a Hindi news and digital media
+              Welcome to Charchit Rajnit, a Hindi news and digital media
               platform dedicated to delivering timely, relevant and responsible
               journalism.
             </p>
 
             <p>
-              Bharat 19 Express is a media initiative of Page 19 Express Media
+              Charchit Rajnit is a media initiative of Page 19 Express Media
               &amp; Advertisement Private Limited. Our objective is to inform,
               educate and engage audiences through credible news reporting,
               meaningful analysis and public-interest journalism.
@@ -35,7 +35,7 @@ function About() {
 
             <p>
               With a strong focus on Uttar Pradesh and coverage of important
-              developments across India and the world, Bharat 19 Express aims to
+              developments across India and the world, Charchit Rajnit aims to
               connect local communities with regional, national and
               international news.
             </p>
@@ -156,7 +156,7 @@ function About() {
             <section>
               <h2>Our Media Platforms</h2>
               <p>
-                Bharat 19 Express reaches its audience through multiple
+                Charchit Rajnit reaches its audience through multiple
                 publishing and communication platforms:
               </p>
 
@@ -210,7 +210,7 @@ function About() {
             <section>
               <h2>Advertising and Business Collaboration</h2>
               <p>
-                Bharat 19 Express provides opportunities for businesses,
+                Charchit Rajnit provides opportunities for businesses,
                 institutions and organisations to enquire about advertising and
                 promotional collaborations across its available media platforms.
               </p>
@@ -229,7 +229,7 @@ function About() {
               </p>
 
               <div className="about-contact-card">
-                <h3>Bharat 19 Express</h3>
+                <h3>Charchit Rajnit</h3>
 
                 <p>
                   A media initiative of Page 19 Express Media &amp;
@@ -264,7 +264,7 @@ function About() {
             </section>
 
             <footer className="about-page-footer">
-              <p>Bharat 19 Express – खबरों से आगे, जनसरोकारों के साथ।</p>
+              <p>Charchit Rajnit – खबरों से आगे, जनसरोकारों के साथ।</p>
             </footer>
           </article>
         </div>

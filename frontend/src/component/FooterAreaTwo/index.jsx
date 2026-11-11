@@ -27,14 +27,14 @@
 //             <div className="single_footer3 mb30">
 //               <div className="logo">
 //                 <Link to="/">
-//                   <img src={logo} alt="Bharat 19 Express" />
+//                   <img src={logo} alt="Charchit Rajnit" />
 //                 </Link>
 
 //                 <div className="space-20" />
 //               </div>
 
 //               <p>
-//                 <span>Bharat 19 Express</span>{" "}
+//                 <span>Charchit Rajnit</span>{" "}
 //                 {t(
 //                   "footerDescription",
 //                   "एक भरोसेमंद हिंदी न्यूज़ प्लेटफॉर्म है, हमारा उद्देश्य महत्वपूर्ण खबरों को सरल, स्पष्ट और तेज़ तरीके से आप तक पहुँचाना है।",
@@ -193,10 +193,10 @@ const FooterAreaTwo = () => {
                   {footerLogo ? (
                     <img
                       src={footerLogo}
-                      alt={settings?.siteName || "Bharat 19 Express"}
+                      alt={settings?.siteName || "Charchit Rajnit"}
                     />
                   ) : (
-                    <h3>{settings?.siteName || "Bharat 19 Express"}</h3>
+                    <h3>{settings?.siteName || "Charchit Rajnit"}</h3>
                   )}
                 </Link>
 
@@ -205,7 +205,7 @@ const FooterAreaTwo = () => {
 
               {/* DESCRIPTION */}
               <p>
-                {/* <span>{settings?.siteName || "Bharat 19 Express"}</span>{" "} */}
+                {/* <span>{settings?.siteName || "Charchit Rajnit"}</span>{" "} */}
                 {t(
                   "footerDescription",
                   "एक भरोसेमंद हिंदी न्यूज़ प्लेटफॉर्म है, हमारा उद्देश्य महत्वपूर्ण खबरों को सरल, स्पष्ट और तेज़ तरीके से आप तक पहुँचाना है।",
