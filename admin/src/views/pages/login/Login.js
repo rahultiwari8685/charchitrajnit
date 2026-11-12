@@ -107,7 +107,7 @@ const Login = () => {
               <CCardBody>
                 {/* Logo */}
                 <div className="text-center mb-4">
-                  <h1 style={styles.brand}>charchitrajnit</h1>
+                  <h1 style={styles.brand}>Charchit Rajnit</h1>
                   <div style={styles.divider}></div>
                   <p style={styles.subtitle}>News Admin Login</p>
                 </div>
