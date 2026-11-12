@@ -567,7 +567,7 @@ border: "1px solid #dddddd",
                 <FontAwesome name="youtube-play" />
               </button>
 
-              {showYoutubeMenu && (
+              {/* {showYoutubeMenu && (
                 <div
                   style={{
                     position: "absolute",
@@ -621,7 +621,7 @@ border: "1px solid #dddddd",
                     </a>
                   ))}
                 </div>
-              )}
+              )} */}
             </div>
 
             <Link
@@ -666,7 +666,7 @@ border: "1px solid #dddddd",
             ))}
 
             {/* Language selector */}
-            <select
+            {/* <select
               value={i18n.resolvedLanguage || "hi"}
               onChange={(e) => changeLanguage(e.target.value)}
               aria-label="Select language"
@@ -692,7 +692,7 @@ border: "1px solid #dddddd",
               <option value="mr" style={{ color: "#222" }}>
                 मराठी
               </option>
-            </select>
+            </select> */}
           </div>
         </div>
       </div>

@@ -80,7 +80,7 @@ function HomeTwo() {
     <>
       <PostGalleryTwo />
       <BannerSection className="theme3_bg mb10" />
-      <YouTubeChannelSlider />
+      {/* <YouTubeChannelSlider /> */}
       <div className="total3 ">
         <div className="container">
           <div className="row">
