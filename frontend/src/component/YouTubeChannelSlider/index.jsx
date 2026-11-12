@@ -74,18 +74,22 @@ const YouTubeChannelSlider = () => {
   if (!channels.length) return null;
 
   // Combine videos from all channels, keeping the existing order.
-  const maxVideos = Math.max(
-    ...channels.map((channel) => channel.videos?.length || 0),
-  );
+  // const maxVideos = Math.max(
+  //   ...channels.map((channel) => channel.videos?.length || 0),
+  // );
 
-  const videos = [];
+  // const videos = [];
 
-  for (let index = 0; index < maxVideos; index++) {
-    channels.forEach((channel) => {
-      const video = channel.videos?.[index];
-      if (video) videos.push(video);
-    });
-  }
+  // for (let index = 0; index < maxVideos; index++) {
+  //   channels.forEach((channel) => {
+  //     const video = channel.videos?.[index];
+  //     if (video) videos.push(video);
+  //   });
+  // }
+
+  // Get latest 5 videos from the single YouTube channel
+const videos = (channels[0]?.videos || [])
+  .slice(0, 5);
 
   if (!videos.length) return null;
 
