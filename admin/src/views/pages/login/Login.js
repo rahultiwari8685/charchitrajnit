@@ -19,7 +19,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import CIcon from '@coreui/icons-react'
 import toast from 'react-hot-toast'
-import newsroomBg from '../../../assets/images/Bharat19_Admin.png'
+import newsroomBg from '../../../assets/images/CH_Admin.png'
 import setting from '../../../setting.json'
 import secureLocalStorage from 'react-secure-storage'
 
