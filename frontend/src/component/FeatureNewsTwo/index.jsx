@@ -192,7 +192,7 @@ const FeatureNewsTwo = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `https://api.charchitrajnit.com/api/news/category/6ab3d6db40046655dd2db091?limit=10&lang=${language}`,
+        `https://api.charchitrajnit.com/api/news/category/6af5368ef184665e5b2947ce?limit=10&lang=${language}`,
       );
 
       if (!res.ok) {

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 const API = "https://api.charchitrajnit.com";
 
 // National category ID
-const NATIONAL_CATEGORY_ID = "6ab3e06740046655dd2db1e5";
+const NATIONAL_CATEGORY_ID = "6af5384ef184665e5b294851";
 
 const International = () => {
   const { i18n, t } = useTranslation();

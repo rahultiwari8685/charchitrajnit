@@ -16,7 +16,7 @@ const PostGalleryTwo = () => {
 
   // Uttar Pradesh category ID
   const UP_CATEGORY_ID = "6ab5133ae0146bb0a4a80e48";
-  const NATIONAL_CATEGORY_ID = "6ab3e06740046655dd2db1e5";
+  const NATIONAL_CATEGORY_ID = "6af5384ef184665e5b294851";
 
   const [videoNews, setVideoNews] = useState(null);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -773,7 +773,7 @@ const PostGalleryTwo = () => {
                       fontWeight: "700",
                     }}
                   >
-                    {t("nationalNews", "National News")}
+                    National News
                   </h4>
                 </div>
                 {textNews.length > 0 ? (

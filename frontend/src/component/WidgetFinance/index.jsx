@@ -166,7 +166,7 @@ const WidgetFinance = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `https://api.charchitrajnit.com/api/news/category/6ab51bfc302ad805145eb3ad?limit=10&lang=${language}`,
+        `https://api.charchitrajnit.com/api/news/category/6af6881d9df0ff2c28a04acb?limit=10&lang=${language}`,
       );
 
       if (!res.ok) {

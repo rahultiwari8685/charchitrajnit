@@ -223,7 +223,7 @@ const Sports = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `${API}/api/news/category/6ab8fe27302ad805145ed91f?limit=10&lang=${language}`,
+        `${API}/api/news/category/6af689259df0ff2c28a04ad9?limit=10&lang=${language}`,
       );
 
       const data = await res.json();

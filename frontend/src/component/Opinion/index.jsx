@@ -21,7 +21,7 @@ const Opinion = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `${API}/api/news/category/6adf44e0dbd6e030fd68abae?limit=1&lang=${language}`,
+        `${API}/api/news/category/6af687ac9df0ff2c28a04a86?limit=1&lang=${language}`,
       );
 
       const data = await res.json();

@@ -18,7 +18,7 @@ const TrendingNewsTwo = () => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `https://api.charchitrajnit.com/api/news/category/6ab5133ae0146bb0a4a80e48?limit=10&lang=${language}`,
+        `https://api.charchitrajnit.com/api/news/category/6af53808f184665e5b29483f?limit=10&lang=${language}`,
       );
 
       if (!res.ok) {
