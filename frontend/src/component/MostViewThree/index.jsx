@@ -264,7 +264,7 @@ const MostViewThree = () => {
 
   return (
     <div className="most_view3 white_bg padding20 border-radiuos5">
-      <h3 className="widget-title">{t("mostShare", "Most Share")}</h3>
+      <h3 className="widget-title">Most Share</h3>
 
       {posts.length === 0 ? (
         <div className="text-center py-3">

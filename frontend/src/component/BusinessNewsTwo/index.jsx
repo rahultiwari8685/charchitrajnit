@@ -259,7 +259,7 @@ const BusinessNewsTwo = () => {
   return (
     <div className="business3 padding20 mb20 white_bg border-radious5">
       {/* HEADING */}
-      <h4 className="widget-title">{t("trendingNews", "Trending News")}</h4>
+      <h4 className="widget-title">Trending News</h4>
 
       {businessNews.map((item, i) => {
         const newsUrl = `/news/${item.slug}`;

@@ -203,7 +203,7 @@ const WidgetFinance = () => {
     <div className="finance mb30 white_bg border-radious5 padding20 sm-mt30">
       {/* LANGUAGE-WISE HEADING */}
       <div className="heading">
-        <h3 className="widget-title">{t("world", "World")}</h3>
+        <h3 className="widget-title">World</h3>
       </div>
 
       {/* WORLD NEWS */}

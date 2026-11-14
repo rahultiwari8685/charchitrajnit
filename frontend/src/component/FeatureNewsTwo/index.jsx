@@ -231,7 +231,7 @@ const FeatureNewsTwo = () => {
         <div className="col-12">
           <div className="heading padding20 white_bg mb20 border-radious5">
             <h3 className="widget-title margin0">
-              {t("politics", "Politics")}
+              Politics
             </h3>
           </div>
         </div>

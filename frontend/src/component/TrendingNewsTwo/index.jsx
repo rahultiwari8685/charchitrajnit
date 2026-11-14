@@ -60,7 +60,7 @@ const TrendingNewsTwo = () => {
   if (!featuredNews) {
     return (
       <div className="white_bg tranding3 padding20 border-radious5 mb30">
-        <h2 className="widget-title">{t("uttarPradesh", "Uttar Pradesh")}</h2>
+        <h2 className="widget-title">Uttar Pradesh</h2>
         <p className="text-muted mb-0">
           {t("noNewsAvailable", "No news available at the moment.")}
         </p>

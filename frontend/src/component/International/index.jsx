@@ -87,7 +87,7 @@ const International = () => {
   if (loading) {
     return (
       <div className="international_news white_bg padding20 border-radious5 sm-mt30">
-        <h3 className="widget-title">{t("national", "National")}</h3>
+        <h3 className="widget-title">National</h3>
 
         <div className="text-center py-3">{t("loading", "Loading...")}</div>
       </div>

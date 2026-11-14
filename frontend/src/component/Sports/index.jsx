@@ -279,7 +279,7 @@ const Sports = () => {
   if (loading) {
     return (
       <div className="sport_side3 white_bg padding20 border-radious5">
-        <h3 className="widget-title">{t("sports", "Sports")}</h3>
+        <h3 className="widget-title">Sports</h3>
 
         <div className="text-center py-3">{t("loading", "Loading...")}</div>
       </div>
@@ -313,7 +313,7 @@ const Sports = () => {
   return (
     <div className="sport_side3 white_bg padding20 border-radious5">
       {/* HEADING */}
-      <h3 className="widget-title">{t("sports", "Sports")}</h3>
+      <h3 className="widget-title">Sports</h3>
 
       {/* FEATURED NEWS */}
       <div className="single_post mb30 type18">

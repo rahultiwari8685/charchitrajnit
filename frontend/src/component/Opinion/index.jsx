@@ -83,7 +83,7 @@ const Opinion = () => {
   if (!news) {
     return (
       <div className="opinion white_bg padding20 border-radious5">
-        <h3 className="widget-title">{t("opinion", "Public Opinion")}</h3>
+        <h3 className="widget-title">Public Opinion</h3>
 
         <div className="text-center py-3">
           {t("noOpinionNews", "No opinion news available")}

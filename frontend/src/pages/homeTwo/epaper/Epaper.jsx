@@ -401,7 +401,7 @@ const Epaper = () => {
 
                     {/* TYPE */}
 
-                    <span
+                    {/* <span
                       style={{
                         position: "absolute",
                         top: "14px",
@@ -416,11 +416,11 @@ const Epaper = () => {
                       }}
                     >
                       {item.category}
-                    </span>
+                    </span> */}
 
                     {/* FEATURED */}
 
-                    {item.featured && (
+                    {/* {item.featured && (
                       <span
                         style={{
                           position: "absolute",
@@ -437,7 +437,7 @@ const Epaper = () => {
                       >
                         Featured
                       </span>
-                    )}
+                    )} */}
                   </div>
 
                   {/* =================================================

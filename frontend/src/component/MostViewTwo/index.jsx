@@ -245,7 +245,7 @@ const MostViewTwo = ({ title }) => {
           {title || t("mostView", "Most Viewed")}
         </h2> */}
 
-        <h2 className="widget-title">{t("mostView", "Most Viewed")}</h2>
+        <h2 className="widget-title">Most Viewed</h2>
       </div>
 
       <div className="post_type2_carousel multipleRowCarousel pt12_wrapper nav_style1">

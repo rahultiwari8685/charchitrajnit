@@ -1014,7 +1014,7 @@ const PostGalleryTwo = () => {
                           fontWeight: "700",
                         }}
                       >
-                        {t("uttarPradesh", "Uttar Pradesh")}
+                        Uttar Pradesh
                       </h4>
                     </div>
 

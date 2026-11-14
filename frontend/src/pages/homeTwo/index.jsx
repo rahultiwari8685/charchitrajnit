@@ -136,7 +136,7 @@ function HomeTwo() {
               <Opinion />
             </div>
             <div className="col-lg-6 col-xl-4">
-              <Whatsnew title={t("entertainment", "Entertainment")} />
+              <Whatsnew title="Entertainment" />
             </div>
           </div>
         </div>

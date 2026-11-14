@@ -739,7 +739,7 @@ const WidgetTabTwo = ({ categoryId, className, dark }) => {
               toggle("1");
             }}
           >
-            {t("related", "RELATED")}
+            RELATED
           </a>
         </NavItem>
 
@@ -755,7 +755,7 @@ const WidgetTabTwo = ({ categoryId, className, dark }) => {
               toggle("2");
             }}
           >
-            {t("latest", "LATEST")}
+            LATEST
           </a>
         </NavItem>
 
@@ -771,7 +771,7 @@ const WidgetTabTwo = ({ categoryId, className, dark }) => {
               toggle("3");
             }}
           >
-            {t("popular", "POPULAR")}
+            POPULAR
           </a>
         </NavItem>
       </Nav>
