@@ -385,7 +385,7 @@ const styles = {
   headerInner: {
     maxWidth: "1400px",
     width: "100%",
-    minHeight: "70px",
+    minHeight: "80px",
     margin: "0 auto",
     padding: "10px 20px",
     display: "flex",
@@ -418,20 +418,34 @@ const styles = {
     color: "#e31e24",
     fontSize: "10px",
     fontWeight: "800",
+      lineHeight: "1.5",
     textTransform: "uppercase",
     letterSpacing: "1.5px",
     marginBottom: "3px",
   },
 
+
   title: {
-    margin: 10,
-    color: "#fff",
-    fontSize: "18px",
-    fontWeight: "800",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
+  margin: 0,
+  padding: "4px 0 3px",
+  color: "#fff",
+  fontSize: "18px",
+  fontWeight: "800",
+  lineHeight: "1.6",
+  whiteSpace: "nowrap",
+  overflow: "visible",
+  textOverflow: "ellipsis",
+},
+
+  // title: {
+  //   margin: 0,
+  //   color: "#fff",
+  //   fontSize: "18px",
+  //   fontWeight: "800",
+  //   whiteSpace: "nowrap",
+  //   overflow: "hidden",
+  //   textOverflow: "ellipsis",
+  // },
 
   downloadBtn: {
     border: "none",
