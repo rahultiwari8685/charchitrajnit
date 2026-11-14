@@ -86,14 +86,19 @@ const getMenu = async () => {
   }
 };
 
-  const parentMenus = menuItems.filter((item) => item.parentCategory === null);
+const parentMenus = menuItems.filter(
+  (item) => item.parentCategory === null
+);
 
-  const getChildren = (parentId) => {
-    return menuItems.filter((item) => item.parentCategory?._id === parentId);
-  };
+const getChildren = (parentId) => {
+  return menuItems.filter(
+    (item) => item.parentCategory?._id === parentId
+  );
+};
 
-  const visibleMenus = parentMenus.slice(0, 8);
-  const moreMenus = parentMenus.slice(10);
+
+const visibleMenus = parentMenus.slice(0, 8);
+const moreMenus = parentMenus.slice(8);
 
 return (
   <>
@@ -194,8 +199,8 @@ return (
                               to={`/category/${parent._id}`}
                               className="menu-dropdown"
                             >
-                              {/* {parent.name} */}
-                              {getCategoryName(parent)}
+                              {parent.name}
+                              {/* {getCategoryName(parent)} */}
                             </NavLink>
                           )}
                         </li>
@@ -235,8 +240,8 @@ return (
                                     {children.map((child) => (
                                       <li key={child._id}>
                                         <NavLink to={`/category/${child._id}`}>
-                                          {/* {child.name} */}
-                                          {getCategoryName(child)}
+                                          {child.name}
+                                          {/* {getCategoryName(child)} */}
                                         </NavLink>
                                       </li>
                                     ))}
