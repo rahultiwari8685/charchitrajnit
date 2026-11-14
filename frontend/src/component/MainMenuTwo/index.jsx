@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import FontAwesome from "../uiStyle/FontAwesome";
 import { NavLink } from "react-router-dom";
 import SidebarMenu from "../SidebarMenu";
-import { useTranslation } from "react-i18next";
 
 
 const mainMenuResponsiveCSS = `
@@ -67,39 +66,25 @@ const mainMenuResponsiveCSS = `
 const MainMenuTwo = () => {
   const API = "https://api.charchitrajnit.com";
 
-  const { t, i18n } = useTranslation();
-  const [menuItems, setMenuItems] = useState([]);
-  const [sideShow, setSideShow] = useState(false);
+const [menuItems, setMenuItems] = useState([]);
+const [sideShow, setSideShow] = useState(false);
 
-  const getCategoryName = (category) => {
-    const lang = i18n.resolvedLanguage || "en";
+useEffect(() => {
+  getMenu();
+}, []);
 
-    return (
-      category?.translations?.[lang]?.name ||
-      category?.translations?.en?.name ||
-      category?.name ||
-      ""
-    );
-  };
+const getMenu = async () => {
+  try {
+    const res = await fetch(`${API}/api/categories/menu`);
+    const data = await res.json();
 
-  useEffect(() => {
-    getMenu();
-  }, [i18n.resolvedLanguage]);
-
-  const getMenu = async () => {
-    try {
-      const language = i18n.resolvedLanguage || "en";
-
-      const res = await fetch(`${API}/api/categories/menu?lang=${language}`);
-      const data = await res.json();
-
-      if (data.success) {
-        setMenuItems(data.data || []);
-      }
-    } catch (error) {
-      console.error("Menu Error:", error);
+    if (data.success) {
+      setMenuItems(data.data || []);
     }
-  };
+  } catch (error) {
+    console.error("Menu Error:", error);
+  }
+};
 
   const parentMenus = menuItems.filter((item) => item.parentCategory === null);
 
@@ -167,7 +152,7 @@ return (
                         })}
                       >
                         <FontAwesome name="home" />
-                        <span>{t("home")}</span>
+                        <span>Home</span>
                       </NavLink>
                     </li>
 
@@ -188,7 +173,7 @@ return (
                                 className="menu-dropdown"
                               >
                                 {/* {parent.name} */}
-                                {getCategoryName(parent)}
+                      {parent.name}
                                 <FontAwesome name="angle-down" />
                               </NavLink>
 
@@ -198,7 +183,7 @@ return (
                                   <li key={child._id}>
                                     <NavLink to={`/category/${child._id}`}>
                                       {/* {child.name} */}
-                                      {getCategoryName(child)}
+                                 {child.name}
                                     </NavLink>
                                   </li>
                                 ))}
@@ -225,7 +210,7 @@ return (
                           onClick={(e) => e.preventDefault()}
                           className="menu-dropdown"
                         >
-                          {t("more")}
+                          More
                           <FontAwesome name="angle-down" />
                         </NavLink>
 
