@@ -424,7 +424,7 @@ const styles = {
   },
 
   title: {
-    margin: 0,
+    margin: 10,
     color: "#fff",
     fontSize: "18px",
     fontWeight: "800",

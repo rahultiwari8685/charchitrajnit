@@ -15,7 +15,7 @@ const PostGalleryTwo = () => {
   const API = "https://api.charchitrajnit.com";
 
   // Uttar Pradesh category ID
-  const UP_CATEGORY_ID = "6ab5133ae0146bb0a4a80e48";
+  const UP_CATEGORY_ID = "6af53808f184665e5b29483f";
   const NATIONAL_CATEGORY_ID = "6af5384ef184665e5b294851";
 
   const [videoNews, setVideoNews] = useState(null);
