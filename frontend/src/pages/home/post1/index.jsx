@@ -148,21 +148,14 @@ useEffect(() => {
     return <h2 className="text-center mt-5">{t("loading") || "Loading..."}</h2>;
   }
 
-  const shareUrl = `https://charchitrajnit.com/category/${categorySlug}/${news?.slug || ""}`;
 
-const shareTitle = decodeHtmlEntities(news?.title || "");
+    const shareUrl = `https://api.charchitrajnit.com/api/news/share/${news?.slug || ""}`;
 
-const shareImage = news?.thumbnail
-  ? `${API}/uploads/images/${news.thumbnail}`
-  : "https://charchitrajnit.com/default-news-image.jpg";
+    const shareTitle = decodeHtmlEntities(news?.title || "");
 
-    // const shareUrl = `https://api.charchitrajnit.com/api/news/share/${news?.slug || ""}`;
-
-    // const shareTitle = decodeHtmlEntities(news?.title || "");
-
-    // const shareImage = news?.thumbnail
-    //   ? `${API}/uploads/images/${news.thumbnail}`
-    //   : "https://charchitrajnit.com/default-news-image.jpg";
+    const shareImage = news?.thumbnail
+      ? `${API}/uploads/images/${news.thumbnail}`
+      : "https://charchitrajnit.com/default-news-image.jpg";
 
   const cleanContent = news?.content
     ?.replace(/style="[^"]*"/g, "")

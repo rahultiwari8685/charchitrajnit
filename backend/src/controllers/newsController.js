@@ -1268,6 +1268,7 @@ export const previousNextNews = async (req, res) => {
   }
 };
 
+
 export const shareNews = async (req, res) => {
   try {
     const news = await News.findOne({
@@ -1283,7 +1284,7 @@ export const shareNews = async (req, res) => {
 
     const image = news.thumbnail
       ? `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`
-      : "";
+      : "https://charchitrajnit.com/default-news-image.jpg";
 
     return res.render("share", {
       title: news.title || "Charchit Rajnit",
@@ -1300,6 +1301,7 @@ export const shareNews = async (req, res) => {
     return res.status(500).send("Unable to load news");
   }
 };
+
 
 export const getLiveStatus = async (req, res) => {
   try {
