@@ -134,18 +134,44 @@ const generateCategoryTranslations = async (name) => {
   return translations;
 };
 
-// const applyCategoryTranslation = (category, lang = "en") => {
-//   const item =
-//     typeof category.toObject === "function"
-//       ? category.toObject()
-//       : { ...category };
 
-//   const translatedName = item.translations?.[lang]?.name?.trim();
+const generateUniqueCategorySlug = async (name, translations, excludeId = null) => {
+  // Prefer English translation for slug
+  const englishName = translations?.en?.name || name;
 
-//   item.name = translatedName || item.name;
+  let baseSlug = slugify(englishName, {
+    lower: true,
+    strict: true,
+    trim: true,
+  });
 
-//   return item;
-// };
+  // If slugify returns empty, use transliteration fallback
+  if (!baseSlug) {
+    baseSlug = `category-${Date.now()}`;
+  }
+
+  let slug = baseSlug;
+  let counter = 1;
+
+  while (true) {
+    const query = { slug };
+
+    if (excludeId) {
+      query._id = { $ne: excludeId };
+    }
+
+    const existing = await Category.findOne(query).select("_id");
+
+    if (!existing) {
+      return slug;
+    }
+
+    slug = `${baseSlug}-${counter}`;
+    counter++;
+  }
+};
+
+
 
 const applyCategoryTranslation = (category, lang = "en") => {
   const item =
@@ -156,8 +182,7 @@ const applyCategoryTranslation = (category, lang = "en") => {
   // First try database translation
   let translatedName = item.translations?.[lang]?.name?.trim();
 
-  // If Urdu translation doesn't exist in old records,
-  // use our predefined translation.
+ 
   if (!translatedName && lang !== "en") {
     const englishName =
       item.translations?.en?.name?.trim() || item.name?.trim();
@@ -198,13 +223,12 @@ export const createCategory = async (req, res) => {
       parentCategory = null;
     }
 
-    const parsedTranslations = await generateCategoryTranslations(name);
+  const parsedTranslations = await generateCategoryTranslations(name);
 
-    const slug = slugify(name, {
-      lower: true,
-      strict: true,
-      trim: true,
-    });
+const slug = await generateUniqueCategorySlug(
+  name,
+  parsedTranslations
+);
 
     const category = await Category.create({
       name,
@@ -257,6 +281,7 @@ export const getAllCategories = async (req, res) => {
   }
 };
 
+
 export const updateCategory = async (req, res) => {
   try {
     const {
@@ -276,9 +301,20 @@ export const updateCategory = async (req, res) => {
       });
     }
 
+    const existingCategory = await Category.findById(id);
+
+    if (!existingCategory) {
+      return res.status(404).json({
+        success: false,
+        message: "Category not found",
+      });
+    }
+
     const updateData = {
       parentCategory:
-        !parentCategory || parentCategory === "0" ? null : parentCategory,
+        !parentCategory || parentCategory === "0"
+          ? null
+          : parentCategory,
 
       showInMenu:
         showInMenu === "1" ||
@@ -289,21 +325,25 @@ export const updateCategory = async (req, res) => {
           : "0",
 
       position: Number(position) || 0,
-
       meta_title: meta_title || "",
       meta_desc: meta_desc || "",
     };
 
     if (name && name.trim()) {
-      updateData.name = name.trim();
+      const cleanName = name.trim();
 
-      updateData.slug = slugify(name.trim(), {
-        lower: true,
-        strict: true,
-        trim: true,
-      });
+      const translations =
+        await generateCategoryTranslations(cleanName);
 
-      updateData.translations = await generateCategoryTranslations(name.trim());
+      const slug = await generateUniqueCategorySlug(
+        cleanName,
+        translations,
+        id
+      );
+
+      updateData.name = cleanName;
+      updateData.slug = slug;
+      updateData.translations = translations;
     }
 
     const updated = await Category.findByIdAndUpdate(
@@ -312,23 +352,24 @@ export const updateCategory = async (req, res) => {
       {
         new: true,
         runValidators: true,
-      },
+      }
     );
-
-    if (!updated) {
-      return res.status(404).json({
-        success: false,
-        message: "Category not found",
-      });
-    }
 
     return res.status(200).json({
       success: true,
       message: "Category updated successfully",
       data: updated,
     });
+
   } catch (error) {
     console.error("Update Category Error:", error);
+
+    if (error.code === 11000) {
+      return res.status(409).json({
+        success: false,
+        message: "Category slug already exists. Please use another category name.",
+      });
+    }
 
     return res.status(500).json({
       success: false,
@@ -336,6 +377,7 @@ export const updateCategory = async (req, res) => {
     });
   }
 };
+
 
 export const deleteCategory = async (req, res) => {
   try {
@@ -400,3 +442,6 @@ export const getMenuCategories = async (req, res) => {
     });
   }
 };
+
+
+
