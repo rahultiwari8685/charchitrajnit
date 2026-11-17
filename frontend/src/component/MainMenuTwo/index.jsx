@@ -157,7 +157,7 @@ return (
                         })}
                       >
                         <FontAwesome name="home" />
-                        <span>Home</span>
+                        <span>होम</span>
                       </NavLink>
                     </li>
 

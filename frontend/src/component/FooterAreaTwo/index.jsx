@@ -233,7 +233,7 @@ const FooterAreaTwo = () => {
               </div>
 
               <div className="single_contact3">
-                <h6>{t("letsChat", "Let's Chat")}</h6>
+                <h6>Let's Chat</h6>
 
                 {emails.length > 0 ? (
                   emails.map((email, index) => (
@@ -249,7 +249,7 @@ const FooterAreaTwo = () => {
               </div>
 
               <div className="single_contact3">
-                <h6>{t("headquarters", "Headquarters")}</h6>
+                <h6>Headquarters</h6>
 
                 <p>{settings?.address || "-"}</p>
               </div>

@@ -67,15 +67,15 @@ const FooterCopyright = () => {
 
   const quick_links = [
     {
-      name: t("about.title", "About"),
+      name: "About",
       link: "/about",
     },
     {
-      name: t("privacy", "Privacy Policy"),
+      name: "Privacy Policy",
       link: "/privacy",
     },
     {
-      name: t("contact", "Contact Us"),
+      name: "Contact Us",
       link: "/contact",
     },
   ];
@@ -100,12 +100,12 @@ const FooterCopyright = () => {
   >
     <p style={{ color: "#ffffff", margin: 0 }}>
       &copy; {new Date().getFullYear()}{" "}
-      {t("copyright", "Copyright")},{" "}
-      {t("allRightsReserved", "All Rights Reserved")}
+      Copyright,{" "}
+      All Rights Reserved
     </p>
 
     <p style={{ color: "#ffffff", margin: 0 }}>
-      {t("developedBy", "Developed By")}:{" "}
+      Developed By:{" "}
       <a
         href="https://techaiindia.com/"
         target="_blank"

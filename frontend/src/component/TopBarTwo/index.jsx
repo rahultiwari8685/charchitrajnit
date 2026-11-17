@@ -521,7 +521,7 @@ border: "1px solid #dddddd",
               }}
             >
               <FontAwesome name="newspaper-o" />
-              <span>{t("epaper", "Epaper")}</span>
+              <span>Epaper</span>
             </NavLink>
 
             <NavLink
@@ -543,7 +543,7 @@ border: "1px solid #dddddd",
               }}
             >
               <FontAwesome name="newspaper-o" />
-              <span>{t("gallery", "Gallery")}</span>
+              <span>Gallery</span>
             </NavLink>
 
             <NavLink
@@ -566,7 +566,7 @@ border: "1px solid #dddddd",
               }}
             >
               <FontAwesome name="newspaper-o" />
-              <span>{t("subscribe", "Subscribe")}</span>
+              <span>Subscribe</span>
             </NavLink>
             {/* YouTube dropdown */}
             <div
@@ -656,7 +656,7 @@ border: "1px solid #dddddd",
                 whiteSpace: "nowrap",
               }}
             >
-              <FontAwesome name="user-circle" /> {t("login", "Login")}
+              <FontAwesome name="user-circle" />Login
             </Link>
 
 
