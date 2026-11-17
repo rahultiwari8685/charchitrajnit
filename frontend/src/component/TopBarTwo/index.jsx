@@ -78,9 +78,32 @@ const topBarResponsiveStyles = `
 
 
 const TopBarTwo = () => {
+
+const [siteSettings, setSiteSettings] = useState(null);
+
+
+
+
   const API = "https://api.charchitrajnit.com";
 
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+  const fetchSiteSettings = async () => {
+    try {
+      const response = await fetch(`${API}/api/site-settings`);
+      const result = await response.json();
+
+      if (result.success) {
+        setSiteSettings(result.data);
+      }
+    } catch (error) {
+      console.error("Site Settings Error:", error);
+    }
+  };
+
+  fetchSiteSettings();
+}, []);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("i18nextLng");
@@ -636,7 +659,60 @@ border: "1px solid #dddddd",
               <FontAwesome name="user-circle" /> {t("login", "Login")}
             </Link>
 
-            {[
+
+{[
+  {
+    icon: "facebook-f",
+    url: siteSettings?.facebook,
+    label: "Facebook",
+  },
+  {
+    icon: "instagram",
+    url: siteSettings?.instagram,
+    label: "Instagram",
+  },
+  {
+    icon: "x-twitter",
+    url: siteSettings?.twitter,
+    label: "X",
+  },
+  {
+    icon: "youtube-play",
+    url: siteSettings?.youtube,
+    label: "YouTube",
+  },
+  {
+    icon: "linkedin",
+    url: siteSettings?.linkedin,
+    label: "LinkedIn",
+  },
+].filter((item) => item.url?.trim()) .map((item) => (
+  <a
+    key={item.icon}
+    href={item.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={item.label}
+    title={item.label}
+    style={{
+      color: "#fff",
+      textDecoration: "none",
+      fontSize: "14px",
+      flexShrink: 0,
+      display: "inline-flex",
+      alignItems: "center",
+    }}
+  >
+    {item.icon === "x-twitter" ? (
+      <FaXTwitter />
+    ) : (
+      <FontAwesome name={item.icon} />
+    )}
+  </a>
+))}
+
+
+            {/* {[
               { icon: "facebook-f", url: "https://www.facebook.com/" },
               { icon: "instagram", url: "https://www.instagram.com/" },
               { icon: "x-twitter", url: "https://x.com/" },
@@ -663,7 +739,7 @@ border: "1px solid #dddddd",
                   <FontAwesome name={item.icon} />
                 )}
               </a>
-            ))}
+            ))} */}
 
             {/* Language selector */}
             {/* <select
