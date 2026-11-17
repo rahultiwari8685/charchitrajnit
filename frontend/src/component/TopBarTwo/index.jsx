@@ -303,7 +303,7 @@ const getAqiLabel = (value) => {
     flexWrap: "wrap",
   }}
 >
-            <div
+            {/* <div
               style={{ position: "relative", display: "inline-block" }}
               onMouseEnter={() => setShowCalendar(true)}
               onMouseLeave={() => setShowCalendar(false)}
@@ -423,7 +423,118 @@ const getAqiLabel = (value) => {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
+
+
+<div
+  style={{ position: "relative", display: "inline-block" }}
+  onMouseEnter={() => setShowCalendar(true)}
+  onMouseLeave={() => setShowCalendar(false)}
+>
+  <span
+    style={{
+      fontWeight: 600,
+      whiteSpace: "nowrap",
+      cursor: "pointer",
+    }}
+  >
+    <FontAwesome name="calendar" />{" "}
+    {new Date().toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      weekday: "long",
+    })}
+  </span>
+
+  {showCalendar && (
+    <div
+      style={{
+        position: "absolute",
+        top: "100%",
+        left: 0,
+        marginTop: "8px",
+        width: "280px",
+        background: "#fff",
+        color: "#222",
+        padding: "15px",
+        borderRadius: "8px",
+        boxShadow: "0 5px 20px rgba(0,0,0,0.2)",
+        zIndex: 99999,
+      }}
+    >
+      <div
+        style={{
+          fontWeight: 700,
+          fontSize: "16px",
+          marginBottom: "10px",
+        }}
+      >
+        {new Date().toLocaleDateString("en-IN", {
+          month: "long",
+          year: "numeric",
+        })}
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(7, 1fr)",
+          gap: "5px",
+          textAlign: "center",
+          fontSize: "12px",
+        }}
+      >
+        {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
+          <div key={day} style={{ fontWeight: 700, padding: "5px 0" }}>
+            {day}
+          </div>
+        ))}
+
+        {Array.from(
+          {
+            length: new Date(
+              new Date().getFullYear(),
+              new Date().getMonth(),
+              1
+            ).getDay(),
+          },
+          (_, i) => <div key={`empty-${i}`} />
+        )}
+
+        {Array.from(
+          {
+            length: new Date(
+              new Date().getFullYear(),
+              new Date().getMonth() + 1,
+              0
+            ).getDate(),
+          },
+          (_, i) => {
+            const day = i + 1;
+            const isToday = day === new Date().getDate();
+
+            return (
+              <div
+                key={day}
+                style={{
+                  padding: "6px 0",
+                  borderRadius: "50%",
+                  background: isToday ? "#a90000" : "transparent",
+                  color: isToday ? "#fff" : "#222",
+                  fontWeight: isToday ? 700 : 400,
+                }}
+              >
+                {day}
+              </div>
+            );
+          }
+        )}
+      </div>
+    </div>
+  )}
+</div>
+
 
             <span style={{ opacity: 0.8 }}>|</span>
 
@@ -447,25 +558,19 @@ const getAqiLabel = (value) => {
   style={{ whiteSpace: "nowrap" }}
   title={
     weather
-      ? t(
-          `weather.${weather.weather_code}`,
-          getWeatherDescription(weather.weather_code)
-        )
-      : t("weather.loading", "Loading weather")
+      ? getWeatherDescription(weather.weather_code)
+      : "Loading weather"
   }
 >
   <FontAwesome name="map-marker" />{" "}
-  {t("lucknow", "लखनऊ")}{" "}
+  Lucknow{" "}
   {weather?.temperature_2m != null
     ? `${Math.round(weather.temperature_2m)}°C`
     : "--°C"}
   {weather && (
     <span>
       {" · "}
-      {t(
-        `weather.${weather.weather_code}`,
-        getWeatherDescription(weather.weather_code)
-      )}
+      {getWeatherDescription(weather.weather_code)}
     </span>
   )}
 </span>
@@ -656,7 +761,7 @@ border: "1px solid #dddddd",
                 whiteSpace: "nowrap",
               }}
             >
-              <FontAwesome name="user-circle" />Login
+              <FontAwesome name="user-circle" /> Login
             </Link>
 
 

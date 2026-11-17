@@ -217,7 +217,7 @@ const FooterAreaTwo = () => {
           <div className="col-lg-8 col-md-6">
             <div className="contacts3">
               <div className="single_contact3">
-                <h6>{t("letsTalk", "Let's Talk")}</h6>
+                <h6>Let's Talk</h6>
 
                 {phoneNumbers.length > 0 ? (
                   phoneNumbers.map((phone, index) => (
