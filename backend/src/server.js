@@ -201,6 +201,52 @@ app.get("/category-:categoryId/:slug", async (req, res) => {
   }
 });
 
+app.get("/news/:slug", async (req, res) => {
+  try {
+    const userAgent = req.get("user-agent") || "";
+
+    const isBot =
+      /facebookexternalhit|Facebot|Twitterbot|WhatsApp|TelegramBot|LinkedInBot|Slackbot|Discordbot|Googlebot/i.test(
+        userAgent
+      );
+
+    if (!isBot) {
+      const frontendIndex = path.resolve(
+        __dirname,
+        "../../frontend/dist/index.html"
+      );
+
+      return res.sendFile(frontendIndex);
+    }
+
+    const news = await News.findOne({
+      slug: req.params.slug,
+      type: 1,
+    });
+
+    if (!news) {
+      return res.status(404).send("News not found");
+    }
+
+    const frontendUrl = `https://charchitrajnit.com/news/${news.slug}`;
+
+    const image = news.thumbnail
+      ? `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`
+      : "";
+
+    return res.render("share", {
+      title: news.title || "Charchit Rajnit",
+      description: news.subtitle || "Latest news from Charchit Rajnit",
+      image,
+      url: frontendUrl,
+      frontendUrl,
+    });
+  } catch (error) {
+    console.error("News OG Preview Error:", error);
+    return res.status(500).send("Unable to load news preview");
+  }
+});
+
 
 app.get("/api/youtube/live", async (req, res) => {
   try {
