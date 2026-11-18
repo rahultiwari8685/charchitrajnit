@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 dotenv.config();
 
 import express from "express";
+import News from "./models/News.js";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
@@ -145,6 +146,62 @@ app.use("/api/youtube", youtubeRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.use("/api/gallery", galleryRoutes);
+
+
+// WhatsApp / Facebook / social media OG preview
+app.get("/category-:categoryId/:slug", async (req, res) => {
+  try {
+    const { categoryId, slug } = req.params;
+
+    const userAgent = req.get("user-agent") || "";
+
+    const isBot =
+      /facebookexternalhit|Facebot|Twitterbot|WhatsApp|TelegramBot|LinkedInBot|Slackbot|Discordbot|Googlebot/i.test(
+        userAgent
+      );
+
+    // Normal visitors get the React + Vite application
+    if (!isBot) {
+      const frontendIndex = path.resolve(
+        __dirname,
+        "../../frontend/dist/index.html"
+      );
+
+      return res.sendFile(frontendIndex);
+    }
+
+    // Find published article using its slug
+    const news = await News.findOne({
+      slug,
+      type: 1,
+    });
+
+    if (!news) {
+      return res.status(404).send("News not found");
+    }
+
+    const frontendUrl =
+      `https://charchitrajnit.com/category-${categoryId}/${news.slug}`;
+
+    const image = news.thumbnail
+      ? `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`
+      : "https://charchitrajnit.com/default-thumbnail.jpg";
+
+    return res.render("share", {
+      title: news.title || "Charchit Rajnit",
+      description:
+        news.subtitle || "Latest news from Charchit Rajnit",
+      image,
+      url: frontendUrl,
+      frontendUrl,
+    });
+  } catch (error) {
+    console.error("OG Preview Error:", error);
+    return res.status(500).send("Unable to load article preview");
+  }
+});
+
+
 app.get("/api/youtube/live", async (req, res) => {
   try {
     const result = await checkLiveStatus();
