@@ -29,6 +29,10 @@ const SiteSetting = () => {
   const [loading, setLoading] = useState(false)
 
   const [headerPreview, setHeaderPreview] = useState('')
+
+  const [headerIsVideo, setHeaderIsVideo] = useState(false)
+
+
   const [footerPreview, setFooterPreview] = useState('')
   const [faviconPreview, setFaviconPreview] = useState('')
 
@@ -208,6 +212,41 @@ const SiteSetting = () => {
 
               <CFormInput
                 type="file"
+                accept="video/mp4,video/webm,video/ogg"
+                {...register('headerLogo')}
+                onChange={(e) => {
+                  const file = e.target.files[0]
+
+                  if (file) {
+                    if (!file.type.startsWith('video/')) {
+                      toast.error('Please select a video file')
+                      e.target.value = ''
+                      return
+                    }
+
+                    setHeaderIsVideo(true)
+                    setHeaderPreview(URL.createObjectURL(file))
+                  }
+                }}
+              />
+
+              {headerPreview && headerIsVideo && (
+                <video
+                  src={headerPreview}
+                  width="220"
+                  controls
+                  muted
+                  loop
+                  playsInline
+                  style={{
+                    borderRadius: 10,
+                    border: '1px solid #ddd',
+                  }}
+                />
+              )}
+
+              {/* <CFormInput
+                type="file"
                 accept="image/*"
                 {...register('headerLogo')}
                 onChange={(e) => {
@@ -217,7 +256,7 @@ const SiteSetting = () => {
                     setHeaderPreview(URL.createObjectURL(file))
                   }
                 }}
-              />
+              /> */}
             </CCol>
 
             <CCol md={6}>
