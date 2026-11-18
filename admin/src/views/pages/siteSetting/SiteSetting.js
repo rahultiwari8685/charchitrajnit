@@ -230,20 +230,7 @@ const SiteSetting = () => {
                 }}
               />
 
-              {headerPreview && headerIsVideo && (
-                <video
-                  src={headerPreview}
-                  width="220"
-                  controls
-                  muted
-                  loop
-                  playsInline
-                  style={{
-                    borderRadius: 10,
-                    border: '1px solid #ddd',
-                  }}
-                />
-              )}
+           
 
               {/* <CFormInput
                 type="file"
@@ -260,11 +247,15 @@ const SiteSetting = () => {
             </CCol>
 
             <CCol md={6}>
-              {headerPreview && (
-                <img
+              {headerPreview && headerIsVideo && (
+                <video
                   src={headerPreview}
+                  width="220"
+                  controls
+                  muted
+                  loop
+                  playsInline
                   style={{
-                    width: 220,
                     borderRadius: 10,
                     border: '1px solid #ddd',
                   }}
