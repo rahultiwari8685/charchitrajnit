@@ -10,6 +10,13 @@ const logoAreaResponsiveCSS = `
     object-fit: contain;
   }
 
+  .logo_area .logo img,
+.logo_area .logo video {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
   .logo_area .banner1 img {
     max-width: 100%;
     height: auto;
@@ -39,11 +46,13 @@ const logoAreaResponsiveCSS = `
       margin: 0 auto;
     }
 
-    .logo_area .logo img {
-      width: 220px !important;
-      max-width: 90%;
-      height: 100px !important;
-    }
+   .logo_area .logo img,
+.logo_area .logo video {
+  width: 220px !important;
+  max-width: 90%;
+  height: 100px !important;
+  object-fit: contain;
+}
 
     .logo_area .banner1 {
       margin-top: 10px;
@@ -106,57 +115,76 @@ const LogoArea = ({ className, dark }) => {
   };
 
   return (
-  <>
-    <style>{logoAreaResponsiveCSS}</style>
+    <>
+      <style>{logoAreaResponsiveCSS}</style>
 
-    <div className={`logo_area ${className || ""}`}>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4 align-self-center">
-            <div className="logo">
-              <Link to="/">
-                {siteSetting?.headerLogo ? (
-                  <img
-                    src={`https://api.charchitrajnit.com/uploads/images/${siteSetting.headerLogo}`}
-                    alt={siteSetting.siteName}
-                    style={{
-                      width: "220px",
-                      height: "100px",
-                      objectFit: "contain",
-                    }}
-                  />
-                ) : (
-                  <h3>Charchit Rajnit</h3>
-                )}
-              </Link>
+      <div className={`logo_area ${className || ""}`}>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-4 align-self-center">
+              <div className="logo">
+                <Link to="/">
+
+                  {siteSetting?.headerLogo ? (
+                    /\.(mp4|webm|ogg|mov)$/i.test(siteSetting.headerLogo) ? (
+                      <video
+                        src={`https://api.charchitrajnit.com/uploads/videos/${siteSetting.headerLogo}`}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        style={{
+                          width: "220px",
+                          height: "100px",
+                          objectFit: "contain",
+                          display: "block",
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={`https://api.charchitrajnit.com/uploads/images/${siteSetting.headerLogo}`}
+                        alt={siteSetting.siteName}
+                        style={{
+                          width: "220px",
+                          height: "100px",
+                          objectFit: "contain",
+                        }}
+                      />
+                    )
+                  ) : (
+                    <h3>Charchit Rajnit</h3>
+                  )}
+
+                </Link>
+              </div>
             </div>
-          </div>
 
-          <div className="col-lg-8 align-self-center">
-            <div className="banner1">
-              {banner && (
-                <a
-                  href={banner.redirectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={`https://api.charchitrajnit.com/uploads/advertisements/${banner.image}`}
-                    alt={banner.title}
-                    style={{
-                      width: "728px",
-                      height: "80px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </a>
-              )}
+            <div className="col-lg-8 align-self-center">
+              <div className="banner1">
+                {banner && (
+                  <a
+                    href={banner.redirectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={`https://api.charchitrajnit.com/uploads/advertisements/${banner.image}`}
+                      alt={banner.title}
+                      style={{
+                        width: "728px",
+                        height: "80px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </>
+    </>
   );
 };
 
