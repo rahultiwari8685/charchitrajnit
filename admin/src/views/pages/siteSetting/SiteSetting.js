@@ -36,6 +36,7 @@ const SiteSetting = () => {
   const [footerPreview, setFooterPreview] = useState('')
 
   const [footerIsVideo, setFooterIsVideo] = useState(false)
+  const [footerLogoFile, setFooterLogoFile] = useState(null)
 
   const [faviconPreview, setFaviconPreview] = useState('')
 
@@ -49,7 +50,7 @@ const SiteSetting = () => {
     resolver: yupResolver(schema),
   })
 
-  const footerLogoRegister = register('footerLogo');
+
 
   const token = JSON.parse(secureLocalStorage.getItem('logininfo'))?.token
 
@@ -384,40 +385,31 @@ const SiteSetting = () => {
                 }}
               /> */}
 
-              <CFormInput
-                type="file"
-                accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime"
-                name={footerLogoRegister.name}
-                ref={footerLogoRegister.ref}
-                onBlur={footerLogoRegister.onBlur}
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
+             <CFormInput
+  type="file"
+  accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
 
-                  if (!file) return;
+    if (!file) return;
 
-                  const isVideo = file.type.startsWith('video/');
-                  const isImage = file.type.startsWith('image/');
+    const isVideo = file.type.startsWith('video/');
+    const isImage = file.type.startsWith('image/');
 
-                  if (!isVideo && !isImage) {
-                    toast.error('Please select an image or video');
-                    e.target.value = '';
-                    setValue('footerLogo', null);
-                    return;
-                  }
+    if (!isVideo && !isImage) {
+      toast.error('Please select an image or video');
+      e.target.value = '';
+      return;
+    }
 
-                  // React Hook Form update
-                  footerLogoRegister.onChange(e);
+    // Store file separately
+    setFooterLogoFile(file);
 
-                  // Set selected file
-                  setValue('footerLogo', e.target.files, {
-                    shouldValidate: true,
-                    shouldDirty: true,
-                  });
-
-                  setFooterIsVideo(isVideo);
-                  setFooterPreview(URL.createObjectURL(file));
-                }}
-              />
+    // Update preview
+    setFooterIsVideo(isVideo);
+    setFooterPreview(URL.createObjectURL(file));
+  }}
+/>
 
               <small className="text-muted">
                 Supported: JPG, PNG, WebP, AVIF, MP4, WebM
