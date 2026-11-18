@@ -163,9 +163,17 @@ const FooterAreaTwo = () => {
     }
   };
 
-  const footerLogo = settings?.footerLogo
-    ? `${API}/uploads/images/${settings.footerLogo}`
-    : "";
+  // const footerLogo = settings?.footerLogo
+  //   ? `${API}/uploads/images/${settings.footerLogo}`
+  //   : "";
+
+  const isFooterVideo = /\.(mp4|webm|ogg|mov)$/i.test(
+  settings?.footerLogo || ""
+);
+
+const footerLogo = settings?.footerLogo
+  ? `${API}/uploads/${isFooterVideo ? "videos" : "images"}/${settings.footerLogo}`
+  : "";
 
   const phoneNumbers = settings?.phone
     ? settings.phone
@@ -190,14 +198,52 @@ const FooterAreaTwo = () => {
               {/* LOGO */}
               <div className="logo">
                 <Link to="/">
-                  {footerLogo ? (
+                  {/* {footerLogo ? (
                     <img
                       src={footerLogo}
                       alt={settings?.siteName || "Charchit Rajnit"}
                     />
                   ) : (
                     <h3>{settings?.siteName || "Charchit Rajnit"}</h3>
-                  )}
+                  )} */}
+
+
+
+{footerLogo ? (
+  isFooterVideo ? (
+    <video
+      key={footerLogo}
+      src={footerLogo}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={`${settings?.siteName || "Charchit Rajnit"} footer logo`}
+      style={{
+        width: "220px",
+        height: "100px",
+        objectFit: "contain",
+        background: "transparent",
+        display: "block",
+      }}
+    />
+  ) : (
+    <img
+      src={footerLogo}
+      alt={settings?.siteName || "Charchit Rajnit"}
+      style={{
+        width: "220px",
+        height: "100px",
+        objectFit: "contain",
+        display: "block",
+      }}
+    />
+  )
+) : (
+  <h3>{settings?.siteName || "Charchit Rajnit"}</h3>
+)}
+
                 </Link>
 
                 <div className="space-20" />

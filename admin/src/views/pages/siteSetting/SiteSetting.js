@@ -34,6 +34,9 @@ const SiteSetting = () => {
 
 
   const [footerPreview, setFooterPreview] = useState('')
+
+  const [footerIsVideo, setFooterIsVideo] = useState(false)
+
   const [faviconPreview, setFaviconPreview] = useState('')
 
   const {
@@ -93,9 +96,19 @@ const SiteSetting = () => {
   );
 }
 
+        // if (data.footerLogo) {
+        //   setFooterPreview(`${setting.api}/uploads/images/${data.footerLogo}`)
+        // }
+
         if (data.footerLogo) {
-          setFooterPreview(`${setting.api}/uploads/images/${data.footerLogo}`)
-        }
+  const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(data.footerLogo);
+
+  setFooterIsVideo(isVideo);
+
+  setFooterPreview(
+    `${setting.api}/uploads/${isVideo ? "videos" : "images"}/${data.footerLogo}`
+  );
+}
 
         if (data.favicon) {
           setFaviconPreview(`${setting.api}/uploads/images/${data.favicon}`)
@@ -302,7 +315,7 @@ const SiteSetting = () => {
 
           <h5 className="mb-4 text-primary">Footer Logo</h5>
 
-          <CRow className="mb-4">
+          {/* <CRow className="mb-4">
             <CCol md={6}>
               <CFormLabel>Footer Logo</CFormLabel>
 
@@ -332,7 +345,83 @@ const SiteSetting = () => {
                 />
               )}
             </CCol>
-          </CRow>
+          </CRow> */}
+
+
+<CRow className="mb-4">
+  <CCol md={6}>
+    <CFormLabel>Footer Logo</CFormLabel>
+
+    <CFormInput
+      type="file"
+      accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
+      {...register('footerLogo')}
+      onChange={(e) => {
+        const file = e.target.files?.[0];
+
+        if (!file) return;
+
+        const isVideo = file.type.startsWith('video/');
+        const isImage = file.type.startsWith('image/');
+
+        if (!isVideo && !isImage) {
+          toast.error('Please select an image or video');
+          e.target.value = '';
+          setValue('footerLogo', null);
+          return;
+        }
+
+        setValue('footerLogo', e.target.files, {
+          shouldValidate: true,
+        });
+
+        setFooterIsVideo(isVideo);
+        setFooterPreview(URL.createObjectURL(file));
+      }}
+    />
+
+    <small className="text-muted">
+      Supported: JPG, PNG, WebP, AVIF, MP4, WebM
+    </small>
+  </CCol>
+
+  <CCol md={6}>
+    {footerPreview && (
+      footerIsVideo ? (
+        <video
+          key={footerPreview}
+          src={footerPreview}
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+          style={{
+            width: 220,
+            height: 110,
+            objectFit: 'contain',
+            background: 'transparent',
+            borderRadius: 10,
+            border: '1px solid #ddd',
+          }}
+        />
+      ) : (
+        <img
+          src={footerPreview}
+          alt="Footer Logo"
+          style={{
+            width: 220,
+            height: 110,
+            objectFit: 'contain',
+            borderRadius: 10,
+            border: '1px solid #ddd',
+          }}
+        />
+      )
+    )}
+  </CCol>
+</CRow>
+
 
           <hr />
 
