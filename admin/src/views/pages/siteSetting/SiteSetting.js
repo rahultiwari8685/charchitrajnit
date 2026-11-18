@@ -83,9 +83,15 @@ const SiteSetting = () => {
           copyright: data.copyright,
         })
 
-        if (data.headerLogo) {
-          setHeaderPreview(`${setting.api}/uploads/images/${data.headerLogo}`)
-        }
+ if (data.headerLogo) {
+  const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(data.headerLogo);
+
+  setHeaderIsVideo(isVideo);
+
+  setHeaderPreview(
+    `${setting.api}/uploads/${isVideo ? "videos" : "images"}/${data.headerLogo}`
+  );
+}
 
         if (data.footerLogo) {
           setFooterPreview(`${setting.api}/uploads/images/${data.footerLogo}`)
@@ -210,25 +216,32 @@ const SiteSetting = () => {
             <CCol md={6}>
               <CFormLabel>Header Logo</CFormLabel>
 
-              <CFormInput
-                type="file"
-                accept="video/mp4,video/webm,video/ogg"
-                {...register('headerLogo')}
-                onChange={(e) => {
-                  const file = e.target.files[0]
+            
+<CFormInput
+  type="file"
+  accept="video/mp4,video/webm,video/ogg,video/quicktime"
+  {...register('headerLogo')}
+  onChange={(e) => {
+    const file = e.target.files?.[0];
 
-                  if (file) {
-                    if (!file.type.startsWith('video/')) {
-                      toast.error('Please select a video file')
-                      e.target.value = ''
-                      return
-                    }
+    if (file) {
+      if (!file.type.startsWith('video/')) {
+        toast.error('Please select a video file');
+        e.target.value = '';
+        setValue('headerLogo', null);
+        return;
+      }
 
-                    setHeaderIsVideo(true)
-                    setHeaderPreview(URL.createObjectURL(file))
-                  }
-                }}
-              />
+      setValue('headerLogo', e.target.files, {
+        shouldValidate: true,
+      });
+
+      setHeaderIsVideo(true);
+      setHeaderPreview(URL.createObjectURL(file));
+    }
+  }}
+/>
+
 
            
 
@@ -246,22 +259,43 @@ const SiteSetting = () => {
               /> */}
             </CCol>
 
-            <CCol md={6}>
-              {headerPreview && headerIsVideo && (
-                <video
-                  src={headerPreview}
-                  width="220"
-                  controls
-                  muted
-                  loop
-                  playsInline
-                  style={{
-                    borderRadius: 10,
-                    border: '1px solid #ddd',
-                  }}
-                />
-              )}
-            </CCol>
+           
+<CCol md={6}>
+  {headerPreview && (
+    headerIsVideo ? (
+      <video
+        key={headerPreview}
+        src={headerPreview}
+        autoPlay
+        muted
+        loop
+        playsInline
+        controls
+        style={{
+          width: 220,
+          height: 110,
+          objectFit: 'contain',
+          background: 'transparent',
+          borderRadius: 10,
+          border: '1px solid #ddd',
+        }}
+      />
+    ) : (
+      <img
+        src={headerPreview}
+        alt="Header Logo"
+        style={{
+          width: 220,
+          height: 110,
+          objectFit: 'contain',
+          borderRadius: 10,
+          border: '1px solid #ddd',
+        }}
+      />
+    )
+  )}
+</CCol>
+
           </CRow>
 
           <hr />
