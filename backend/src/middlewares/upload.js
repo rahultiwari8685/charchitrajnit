@@ -42,21 +42,25 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = [
-    "application/pdf",
+ const allowedTypes = [
+  "application/pdf",
 
-    "image/jpeg",
-    "image/png",
-    "image/webp",
-    "image/avif",
-    "image/gif",
+  // Images
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/avif",
+  "image/gif",
 
-    // Videos
-    "video/mp4",
-    "video/quicktime", // .mov
-    "video/x-msvideo", // .avi
-    "video/x-matroska", // .mkv
-  ];
+  // Videos
+  "video/mp4",
+  "video/webm",
+  "video/quicktime",
+  "video/x-msvideo",
+  "video/x-matroska",
+  "video/ogg",
+  "application/ogg",
+];
 
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
