@@ -86,29 +86,29 @@ const SiteSetting = () => {
           copyright: data.copyright,
         })
 
- if (data.headerLogo) {
-  const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(data.headerLogo);
+        if (data.headerLogo) {
+          const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(data.headerLogo);
 
-  setHeaderIsVideo(isVideo);
+          setHeaderIsVideo(isVideo);
 
-  setHeaderPreview(
-    `${setting.api}/uploads/${isVideo ? "videos" : "images"}/${data.headerLogo}`
-  );
-}
+          setHeaderPreview(
+            `${setting.api}/uploads/${isVideo ? "videos" : "images"}/${data.headerLogo}`
+          );
+        }
 
         // if (data.footerLogo) {
         //   setFooterPreview(`${setting.api}/uploads/images/${data.footerLogo}`)
         // }
 
         if (data.footerLogo) {
-  const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(data.footerLogo);
+          const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(data.footerLogo);
 
-  setFooterIsVideo(isVideo);
+          setFooterIsVideo(isVideo);
 
-  setFooterPreview(
-    `${setting.api}/uploads/${isVideo ? "videos" : "images"}/${data.footerLogo}`
-  );
-}
+          setFooterPreview(
+            `${setting.api}/uploads/${isVideo ? "videos" : "images"}/${data.footerLogo}`
+          );
+        }
 
         if (data.favicon) {
           setFaviconPreview(`${setting.api}/uploads/images/${data.favicon}`)
@@ -229,34 +229,34 @@ const SiteSetting = () => {
             <CCol md={6}>
               <CFormLabel>Header Logo</CFormLabel>
 
-            
-<CFormInput
-  type="file"
-  accept="video/mp4,video/webm,video/ogg,video/quicktime"
-  {...register('headerLogo')}
-  onChange={(e) => {
-    const file = e.target.files?.[0];
 
-    if (file) {
-      if (!file.type.startsWith('video/')) {
-        toast.error('Please select a video file');
-        e.target.value = '';
-        setValue('headerLogo', null);
-        return;
-      }
+              <CFormInput
+                type="file"
+                accept="video/mp4,video/webm,video/ogg,video/quicktime"
+                {...register('headerLogo')}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
 
-      setValue('headerLogo', e.target.files, {
-        shouldValidate: true,
-      });
+                  if (file) {
+                    if (!file.type.startsWith('video/')) {
+                      toast.error('Please select a video file');
+                      e.target.value = '';
+                      setValue('headerLogo', null);
+                      return;
+                    }
 
-      setHeaderIsVideo(true);
-      setHeaderPreview(URL.createObjectURL(file));
-    }
-  }}
-/>
+                    setValue('headerLogo', e.target.files, {
+                      shouldValidate: true,
+                    });
+
+                    setHeaderIsVideo(true);
+                    setHeaderPreview(URL.createObjectURL(file));
+                  }
+                }}
+              />
 
 
-           
+
 
               {/* <CFormInput
                 type="file"
@@ -272,42 +272,42 @@ const SiteSetting = () => {
               /> */}
             </CCol>
 
-           
-<CCol md={6}>
-  {headerPreview && (
-    headerIsVideo ? (
-      <video
-        key={headerPreview}
-        src={headerPreview}
-        autoPlay
-        muted
-        loop
-        playsInline
-        controls
-        style={{
-          width: 220,
-          height: 110,
-          objectFit: 'contain',
-          background: 'transparent',
-          borderRadius: 10,
-          border: '1px solid #ddd',
-        }}
-      />
-    ) : (
-      <img
-        src={headerPreview}
-        alt="Header Logo"
-        style={{
-          width: 220,
-          height: 110,
-          objectFit: 'contain',
-          borderRadius: 10,
-          border: '1px solid #ddd',
-        }}
-      />
-    )
-  )}
-</CCol>
+
+            <CCol md={6}>
+              {headerPreview && (
+                headerIsVideo ? (
+                  <video
+                    key={headerPreview}
+                    src={headerPreview}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    style={{
+                      width: 220,
+                      height: 110,
+                      objectFit: 'contain',
+                      background: 'transparent',
+                      borderRadius: 10,
+                      border: '1px solid #ddd',
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={headerPreview}
+                    alt="Header Logo"
+                    style={{
+                      width: 220,
+                      height: 110,
+                      objectFit: 'contain',
+                      borderRadius: 10,
+                      border: '1px solid #ddd',
+                    }}
+                  />
+                )
+              )}
+            </CCol>
 
           </CRow>
 
@@ -348,79 +348,79 @@ const SiteSetting = () => {
           </CRow> */}
 
 
-<CRow className="mb-4">
-  <CCol md={6}>
-    <CFormLabel>Footer Logo</CFormLabel>
+          <CRow className="mb-4">
+            <CCol md={6}>
+              <CFormLabel>Footer Logo</CFormLabel>
 
-    <CFormInput
-      type="file"
-      accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
-      {...register('footerLogo')}
-      onChange={(e) => {
-        const file = e.target.files?.[0];
+              <CFormInput
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
+                {...register('footerLogo')}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
 
-        if (!file) return;
+                  if (!file) return;
 
-        const isVideo = file.type.startsWith('video/');
-        const isImage = file.type.startsWith('image/');
+                  const isVideo = file.type.startsWith('video/');
+                  const isImage = file.type.startsWith('image/');
 
-        if (!isVideo && !isImage) {
-          toast.error('Please select an image or video');
-          e.target.value = '';
-          setValue('footerLogo', null);
-          return;
-        }
+                  if (!isVideo && !isImage) {
+                    toast.error('Please select an image or video');
+                    e.target.value = '';
+                    setValue('footerLogo', null);
+                    return;
+                  }
 
-        setValue('footerLogo', e.target.files, {
-          shouldValidate: true,
-        });
+                  setValue('footerLogo', e.target.files, {
+                    shouldValidate: true,
+                  });
 
-        setFooterIsVideo(isVideo);
-        setFooterPreview(URL.createObjectURL(file));
-      }}
-    />
+                  setFooterIsVideo(isVideo);
+                  setFooterPreview(URL.createObjectURL(file));
+                }}
+              />
 
-    <small className="text-muted">
-      Supported: JPG, PNG, WebP, AVIF, MP4, WebM
-    </small>
-  </CCol>
+              <small className="text-muted">
+                Supported: JPG, PNG, WebP, AVIF, MP4, WebM
+              </small>
+            </CCol>
 
-  <CCol md={6}>
-    {footerPreview && (
-      footerIsVideo ? (
-        <video
-          key={footerPreview}
-          src={footerPreview}
-          autoPlay
-          muted
-          loop
-          playsInline
-          controls
-          style={{
-            width: 220,
-            height: 110,
-            objectFit: 'contain',
-            background: 'transparent',
-            borderRadius: 10,
-            border: '1px solid #ddd',
-          }}
-        />
-      ) : (
-        <img
-          src={footerPreview}
-          alt="Footer Logo"
-          style={{
-            width: 220,
-            height: 110,
-            objectFit: 'contain',
-            borderRadius: 10,
-            border: '1px solid #ddd',
-          }}
-        />
-      )
-    )}
-  </CCol>
-</CRow>
+            <CCol md={6}>
+              {footerPreview && (
+                footerIsVideo ? (
+                  <video
+                    key={footerPreview}
+                    src={footerPreview}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    style={{
+                      width: 220,
+                      height: 110,
+                      objectFit: 'contain',
+                      background: 'transparent',
+                      borderRadius: 10,
+                      border: '1px solid #ddd',
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={footerPreview}
+                    alt="Footer Logo"
+                    style={{
+                      width: 220,
+                      height: 110,
+                      objectFit: 'contain',
+                      borderRadius: 10,
+                      border: '1px solid #ddd',
+                    }}
+                  />
+                )
+              )}
+            </CCol>
+          </CRow>
 
 
           <hr />

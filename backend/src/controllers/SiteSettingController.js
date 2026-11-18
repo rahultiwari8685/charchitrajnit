@@ -6,16 +6,19 @@ import SiteSetting from "../models/SiteSetting.js";
 const deleteFile = (filename) => {
   if (!filename) return;
 
-  const filePath = path.join(process.cwd(), "uploads", "images", filename);
+  const extension = path.extname(filename).toLowerCase();
+
+  const videoExtensions = [".mp4", ".webm", ".ogg", ".mov", ".avi", ".mkv"];
+
+  const folder = videoExtensions.includes(extension) ? "videos" : "images";
+
+  const filePath = path.join(process.cwd(), "uploads", folder, filename);
 
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
   }
 };
 
-// ==========================
-// CREATE / UPDATE SETTINGS
-// ==========================
 
 export const saveSiteSetting = async (req, res) => {
   try {
@@ -93,9 +96,6 @@ export const saveSiteSetting = async (req, res) => {
   }
 };
 
-// ==========================
-// GET SITE SETTINGS
-// ==========================
 
 export const getSiteSetting = async (req, res) => {
   try {
@@ -113,9 +113,6 @@ export const getSiteSetting = async (req, res) => {
   }
 };
 
-// ==========================
-// DELETE HEADER LOGO
-// ==========================
 
 export const deleteHeaderLogo = async (req, res) => {
   try {
@@ -146,9 +143,6 @@ export const deleteHeaderLogo = async (req, res) => {
   }
 };
 
-// ==========================
-// DELETE FOOTER LOGO
-// ==========================
 
 export const deleteFooterLogo = async (req, res) => {
   try {
@@ -179,9 +173,6 @@ export const deleteFooterLogo = async (req, res) => {
   }
 };
 
-// ==========================
-// DELETE FAVICON
-// ==========================
 
 export const deleteFavicon = async (req, res) => {
   try {
