@@ -1,4 +1,3 @@
-
 import express from "express";
 import fs from "fs";
 import path from "path";
@@ -13,115 +12,78 @@ const __dirname = path.dirname(__filename);
 const DIST = path.join(__dirname, "dist");
 const INDEX = path.join(DIST, "index.html");
 
-const baseHtml = fs.readFileSync(INDEX, "utf8");
-
 app.use(express.static(DIST));
 
-// Escape HTML attributes and content
-const escapeHtml = (value = "") =>
-  String(value).replace(/[&<>"']/g, (char) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  })[char]);
+const BOT_REGEX =
+  /facebookexternalhit|Facebot|Twitterbot|WhatsApp|TelegramBot|LinkedInBot|Slackbot|Discordbot|Googlebot/i;
 
+const baseHtml = fs.readFileSync(INDEX, "utf8");
 
+// Old slug -> new slug redirects
 const slugRedirects = {
   "-2": "haryana-ko-mili-badi-jimmedari-cpa-zone-2-ki-karegi-mezbani",
-  "30": "sapa-ko-bada-jhatka-30-padadhikariyon-ne-thama-subhaspa-ka-daman",
+
+  30: "sapa-ko-bada-jhatka-30-padadhikariyon-ne-thama-subhaspa-ka-daman",
+
   sc: "lakhimpur-hinsa-case-mein-dheeme-trial-par-sc-sakht-ashish-mishra-mamle-mein-mangi-nayi-report",
+
   "up--": "up-mein-congress-spa-ka-hoga-safaya-keshav",
 };
 
 app.get("/news/:slug", async (req, res) => {
   try {
-    const slug = req.params.slug;
-
-    if (slugRedirects[slug]) {
-      return res.redirect(301, `/news/${slugRedirects[slug]}`);
+    const oldSlug = req.params.slug;
+    if (slugRedirects[oldSlug]) {
+      return res.redirect(301, `/news/${slugRedirects[oldSlug]}`);
     }
 
-
-    const response = await axios.get(
-      `https://api.charchitrajnit.com/api/news/slug/${encodeURIComponent(slug)}`,
-      { timeout: 10000 }
+    const { data } = await axios.get(
+      `https://api.charchitrajnit.com/api/news/slug/${encodeURIComponent(oldSlug)}`,
     );
 
-    const news = response.data?.data;
-
-    if (!response.data?.status || !news) {
-      return res.status(404).send(baseHtml);
+    if (!data.status || !data.data) {
+      return res.send(baseHtml);
     }
 
-    const title = escapeHtml(news.metaTitle || news.title || "Charchitrajnit");
-
-    const description = escapeHtml(
-      news.metaDescription || news.subtitle || news.title || ""
-    );
-
+    const news = data.data;
 
     const image = news.thumbnail
-      ? `https://api.charchitrajnit.com/uploads/images/${encodeURIComponent(news.thumbnail)}`
+      ? `https://api.charchitrajnit.com/uploads/images/${news.thumbnail}`
       : "";
-
-    const pageUrl = `https://charchitrajnit.com/news/${encodeURIComponent(news.slug || slug)}`;
 
     let html = baseHtml;
 
     const tags = `
-      <title>${title}</title>
+<title>${news.metaTitle || news.title}</title>
 
-      <meta name="description" content="${description}">
+<meta name="description" content="${news.metaDescription || news.subtitle || ""}">
 
-      <link rel="canonical" href="${pageUrl}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="${news.title}">
+<meta property="og:description" content="${news.metaDescription || news.subtitle || ""}">
+<meta property="og:image" content="${image}">
+<meta property="og:url" content="https://charchitrajnit.com/news/${news.slug}">
 
-      <meta property="og:type" content="article">
-      <meta property="og:site_name" content="Charchitrajnit">
-      <meta property="og:title" content="${title}">
-      <meta property="og:description" content="${description}">
-      <meta property="og:url" content="${pageUrl}">
-      ${image ? `
-      <meta property="og:image" content="${image}">
-      <meta property="og:image:secure_url" content="${image}">
-      <meta property="og:image:width" content="1200">
-      <meta property="og:image:height" content="630">
-      <meta property="og:image:alt" content="${title}">
-      ` : ""}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${news.title}">
+<meta name="twitter:description" content="${news.metaDescription || news.subtitle || ""}">
+<meta name="twitter:image" content="${image}">
+`;
 
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="${title}">
-      <meta name="twitter:description" content="${description}">
-      ${image ? `<meta name="twitter:image" content="${image}">` : ""}
-    `;
+    html = html.replace("</head>", tags + "</head>");
 
-    // Replace default title and inject dynamic metadata
-    html = html.replace(
-      /<title[^>]*>[\s\S]*?<\/title>/i,
-      ""
-    );
+    return res.send(html);
+  } catch (err) {
+    console.error("News SSR Error:", err.message);
 
-    html = html.replace(
-      /<\/head>/i,
-      `${tags}</head>`
-    );
-
-    res.set("Cache-Control", "public, max-age=300");
-
-    return res.status(200).send(html);
-
-  } catch (error) {
-    console.error("News SSR Error:", error.response?.data || error.message);
-    return res.status(200).send(baseHtml);
+    return res.send(baseHtml);
   }
 });
 
-// React Vite fallback
 app.use((req, res) => {
   res.sendFile(INDEX);
 });
 
-app.listen(3006, () => {
-  console.log("Charchitrajnit frontend running on port 3006");
+app.listen(3005, () => {
+  console.log("Frontend running on port 3005");
 });
