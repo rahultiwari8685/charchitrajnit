@@ -49,6 +49,8 @@ const SiteSetting = () => {
     resolver: yupResolver(schema),
   })
 
+  const footerLogoRegister = register('footerLogo');
+
   const token = JSON.parse(secureLocalStorage.getItem('logininfo'))?.token
 
   useEffect(() => {
@@ -145,9 +147,11 @@ const SiteSetting = () => {
         formData.append('headerLogo', data.headerLogo[0])
       }
 
-      if (data.footerLogo?.[0]) {
-        formData.append('footerLogo', data.footerLogo[0])
-      }
+  if (data.footerLogo?.[0]) {
+  console.log('Footer Logo:', data.footerLogo[0]);
+
+  formData.append('footerLogo', data.footerLogo[0]);
+}
 
       if (data.favicon?.[0]) {
         formData.append('favicon', data.favicon[0])
@@ -352,7 +356,7 @@ const SiteSetting = () => {
             <CCol md={6}>
               <CFormLabel>Footer Logo</CFormLabel>
 
-              <CFormInput
+              {/* <CFormInput
                 type="file"
                 accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
                 {...register('footerLogo')}
@@ -373,6 +377,41 @@ const SiteSetting = () => {
 
                   setValue('footerLogo', e.target.files, {
                     shouldValidate: true,
+                  });
+
+                  setFooterIsVideo(isVideo);
+                  setFooterPreview(URL.createObjectURL(file));
+                }}
+              /> */}
+
+              <CFormInput
+                type="file"
+                accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime"
+                name={footerLogoRegister.name}
+                ref={footerLogoRegister.ref}
+                onBlur={footerLogoRegister.onBlur}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+
+                  if (!file) return;
+
+                  const isVideo = file.type.startsWith('video/');
+                  const isImage = file.type.startsWith('image/');
+
+                  if (!isVideo && !isImage) {
+                    toast.error('Please select an image or video');
+                    e.target.value = '';
+                    setValue('footerLogo', null);
+                    return;
+                  }
+
+                  // React Hook Form update
+                  footerLogoRegister.onChange(e);
+
+                  // Set selected file
+                  setValue('footerLogo', e.target.files, {
+                    shouldValidate: true,
+                    shouldDirty: true,
                   });
 
                   setFooterIsVideo(isVideo);
