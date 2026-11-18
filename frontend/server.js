@@ -27,7 +27,7 @@ const escapeHtml = (value = "") =>
     "'": "&#39;",
   })[char]);
 
-// Old slug -> new slug redirects
+
 const slugRedirects = {
   "-2": "haryana-ko-mili-badi-jimmedari-cpa-zone-2-ki-karegi-mezbani",
   "30": "sapa-ko-bada-jhatka-30-padadhikariyon-ne-thama-subhaspa-ka-daman",
@@ -43,7 +43,7 @@ app.get("/news/:slug", async (req, res) => {
       return res.redirect(301, `/news/${slugRedirects[slug]}`);
     }
 
-    // Fetch news from backend API
+
     const response = await axios.get(
       `https://api.charchitrajnit.com/api/news/slug/${encodeURIComponent(slug)}`,
       { timeout: 10000 }
@@ -61,7 +61,7 @@ app.get("/news/:slug", async (req, res) => {
       news.metaDescription || news.subtitle || news.title || ""
     );
 
-    // Thumbnail URL
+
     const image = news.thumbnail
       ? `https://api.charchitrajnit.com/uploads/images/${encodeURIComponent(news.thumbnail)}`
       : "";
@@ -122,6 +122,6 @@ app.use((req, res) => {
   res.sendFile(INDEX);
 });
 
-app.listen(3005, () => {
-  console.log("Frontend running on port 3005");
+app.listen(3006, () => {
+  console.log("Charchitrajnit frontend running on port 3006");
 });
