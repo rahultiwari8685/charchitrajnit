@@ -10,6 +10,35 @@ const logoAreaResponsiveCSS = `
     object-fit: contain;
   }
 
+
+  .logo_area .logo {
+  display: flex;
+  align-items: center;
+  min-height: 120px;
+}
+
+.logo_area .logo video,
+.logo_area .logo img {
+  width: 260px;
+  height: 110px;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .logo_area .logo {
+    justify-content: center;
+  }
+
+  .logo_area .logo video,
+  .logo_area .logo img {
+    width: 220px;
+    height: 90px;
+    object-position: center;
+  }
+}
+
   .logo_area .logo img,
 .logo_area .logo video {
   max-width: 100%;
@@ -134,12 +163,14 @@ const LogoArea = ({ className, dark }) => {
                         loop
                         playsInline
                         preload="metadata"
-                        style={{
-                          width: "220px",
-                          height: "100px",
-                          objectFit: "contain",
-                          display: "block",
-                        }}
+                    style={{
+  width: "260px",
+  height: "110px",
+  objectFit: "contain",
+  objectPosition: "left center",
+  display: "block",
+  background: "transparent",
+}}
                       />
                     ) : (
                       <img
