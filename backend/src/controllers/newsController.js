@@ -394,11 +394,7 @@ export const getAllDraftNews = async (req, res) => {
       type: 2,
     };
 
-    /*
-      |--------------------------------------------------------------------------
-      | Author Filter
-      |--------------------------------------------------------------------------
-      */
+
 
     if (author) {
       if (!mongoose.Types.ObjectId.isValid(author)) {
