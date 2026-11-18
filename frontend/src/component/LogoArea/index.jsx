@@ -156,21 +156,35 @@ const LogoArea = ({ className, dark }) => {
 
                   {siteSetting?.headerLogo ? (
                     /\.(mp4|webm|ogg|mov)$/i.test(siteSetting.headerLogo) ? (
+                      // <video
+                      //   src={`https://api.charchitrajnit.com/uploads/videos/${siteSetting.headerLogo}`}
+                      //   autoPlay
+                      //   muted
+                      //   loop
+                      //   playsInline
+                      //   preload="metadata"
+                      //   style={{
+                      //     width: "260px",
+                      //     height: "110px",
+                      //     objectFit: "contain",
+                      //     objectPosition: "left center",
+                      //     display: "block",
+                      //     background: "transparent",
+                      //   }}
+                      // />
+
                       <video
                         src={`https://api.charchitrajnit.com/uploads/videos/${siteSetting.headerLogo}`}
                         autoPlay
                         muted
                         loop
                         playsInline
-                        preload="metadata"
-                    style={{
-  width: "260px",
-  height: "110px",
-  objectFit: "contain",
-  objectPosition: "left center",
-  display: "block",
-  background: "transparent",
-}}
+                        style={{
+                          width: "120px",
+                          height: "120px",
+                          objectFit: "contain",
+                          background: "transparent",
+                        }}
                       />
                     ) : (
                       <img
