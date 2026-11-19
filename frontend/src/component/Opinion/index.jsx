@@ -102,7 +102,7 @@ const Opinion = () => {
 
   return (
     <div className="opinion white_bg padding20 border-radious5">
-      <h3 className="widget-title">{t("opinion", "Opinion")}</h3>
+      <h3 className="widget-title">Opinion</h3>
 
       <div className="single_post post_type3 post_type15">
         <div className="post_img border-radious5">

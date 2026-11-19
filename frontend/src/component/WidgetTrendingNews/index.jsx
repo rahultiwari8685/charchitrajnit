@@ -220,7 +220,7 @@ const WidgetTrendingNews = ({ dark }) => {
 
   return (
     <div className="trending_widget mb30">
-      <h2 className="widget-title">{t("trending") || "Trending News"}</h2>
+      <h2 className="widget-title">Trending News</h2>
 
       {/* First Big News */}
 

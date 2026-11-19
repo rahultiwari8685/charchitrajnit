@@ -108,7 +108,7 @@ const International = () => {
 
   return (
     <div className="international_news white_bg padding20 border-radious5 sm-mt30">
-      <h3 className="widget-title">{t("national", "National")}</h3>
+      <h3 className="widget-title">National</h3>
 
       {nationalNews.map((item, i) => {
         const image = item.thumbnail
