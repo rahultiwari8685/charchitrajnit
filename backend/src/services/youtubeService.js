@@ -37,9 +37,6 @@ const YOUTUBE_CHANNELS = [
   },
 ];
 
-
-
-
 export const checkLiveStatus = async () => {
   if (!process.env.YOUTUBE_API_KEY) {
     console.error("Missing YOUTUBE_API_KEY");
@@ -149,8 +146,6 @@ export const checkLiveStatus = async () => {
     );
   }
 };
-
-
 
 export const getLatestYouTubeVideos = async () => {
   if (!process.env.YOUTUBE_API_KEY) {

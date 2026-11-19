@@ -58,11 +58,11 @@ const YouTubeChannelSlider = () => {
         <section className="youtube-section">
           <div className="container">
             <div className="youtube-heading">
-              <h2>{t("videosNews", "Video News")}</h2>
+              <h2>Video News</h2>
             </div>
 
             <div className="youtube-loading">
-              {t("loadingVideos", "Loading videos...")}
+              Loading videos...
             </div>
           </div>
         </section>
@@ -141,7 +141,7 @@ const YouTubeChannelSlider = () => {
         <div className="container">
           <div className="youtube-heading">
             <div>
-              <h2>{t("videosNews", "Video News")}</h2>
+              <h2>Video News</h2>
             </div>
 
             {videos.length > 0 && (
@@ -152,8 +152,8 @@ const YouTubeChannelSlider = () => {
                 aria-expanded={showAllVideos}
               >
                 {showAllVideos
-                  ? t("showLess", "Show Less")
-                  : t("seeMore", "See More")}
+                  ? "Show Less"
+                  : "See More"}
 
                 <span>{showAllVideos ? "↑" : "→"}</span>
               </button>
