@@ -13,21 +13,21 @@ const YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3";
 
 const YOUTUBE_CHANNELS = [
   {
-    name: "Charchit Rajnit",
-    channelId: "gclS2FjsjGcC5tpA",
+    name: "Bharat 19 Express Nation",
+    channelId: "UC0lg7tqrUdlky_u1Wug7uEw",
   },
-  // {
-  //   name: "Charchit Rajnit Regional",
-  //   channelId: "UC7_OlirbGWvmG0-0Nc3WedA",
-  // },
-  // {
-  //   name: "Bharat 19 Entertainment",
-  //   channelId: "UCkJQAejO5Zx1TaQzzA_3Hvg",
-  // },
-  // {
-  //   name: "चर्चित राजनीति",
-  //   channelId: "UCygk_AnahPPNje9H3NLK1tA",
-  // },
+  {
+    name: "Bharat 19 Express Regional",
+    channelId: "UC7_OlirbGWvmG0-0Nc3WedA",
+  },
+  {
+    name: "Bharat 19 Entertainment",
+    channelId: "UCkJQAejO5Zx1TaQzzA_3Hvg",
+  },
+  {
+    name: "भारत 19 एक्सप्रेस",
+    channelId: "UCygk_AnahPPNje9H3NLK1tA",
+  },
 ];
 
 // export const checkLiveStatus = async () => {
