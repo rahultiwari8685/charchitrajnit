@@ -408,30 +408,35 @@ const SiteSetting = () => {
                 }}
               /> */}
 
-                   <CFormInput
-                type="file"
-                accept="video/mp4,video/webm,video/ogg,video/quicktime"
-                {...register('footerLogo')}
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
+                 
+<CFormInput
+  type="file"
+  accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
+  {...register('footerLogo')}
+  onChange={(e) => {
+    const file = e.target.files?.[0];
 
-                  if (file) {
-                    if (!file.type.startsWith('video/')) {
-                      toast.error('Please select a video file');
-                      e.target.value = '';
-                      setValue('footerLogo', null);
-                      return;
-                    }
+    if (!file) return;
 
-                    setValue('footerLogo', e.target.files, {
-                      shouldValidate: true,
-                    });
+    const isVideo = file.type.startsWith('video/');
+    const isImage = file.type.startsWith('image/');
 
-                    setFooterIsVideo(true);
-                    setFooterPreview(URL.createObjectURL(file));
-                  }
-                }}
-              />
+    if (!isVideo && !isImage) {
+      toast.error('Please select an image or video');
+      e.target.value = '';
+      setValue('footerLogo', null);
+      return;
+    }
+
+    setValue('footerLogo', e.target.files, {
+      shouldValidate: true,
+    });
+
+    setFooterIsVideo(isVideo);
+    setFooterPreview(URL.createObjectURL(file));
+  }}
+/>
+
 
               <small className="text-muted">
                 Supported: JPG, PNG, WebP, AVIF, MP4, WebM
