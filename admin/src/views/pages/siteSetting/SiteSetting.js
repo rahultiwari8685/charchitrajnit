@@ -148,11 +148,10 @@ const SiteSetting = () => {
         formData.append('headerLogo', data.headerLogo[0])
       }
 
-  if (data.footerLogo?.[0]) {
-  console.log('Footer Logo:', data.footerLogo[0]);
+      if (data.footerLogo?.[0]) {
 
-  formData.append('footerLogo', data.footerLogo[0]);
-}
+        formData.append('footerLogo', data.footerLogo[0]);
+      }
 
       if (data.favicon?.[0]) {
         formData.append('favicon', data.favicon[0])
@@ -192,7 +191,6 @@ const SiteSetting = () => {
 
       <CCardBody>
         <CForm onSubmit={handleSubmit(saveSetting)}>
-          {/* GENERAL */}
 
           <h5 className="mb-4 text-primary">General Information</h5>
 
@@ -233,7 +231,6 @@ const SiteSetting = () => {
           <CRow className="mb-4">
             <CCol md={6}>
               <CFormLabel>Header Logo</CFormLabel>
-
 
               <CFormInput
                 type="file"
@@ -385,31 +382,56 @@ const SiteSetting = () => {
                 }}
               /> */}
 
-             <CFormInput
-  type="file"
-  accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime"
-  onChange={(e) => {
-    const file = e.target.files?.[0];
+              {/* <CFormInput
+                type="file"
+                accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
 
-    if (!file) return;
+                  if (!file) return;
 
-    const isVideo = file.type.startsWith('video/');
-    const isImage = file.type.startsWith('image/');
+                  const isVideo = file.type.startsWith('video/');
+                  const isImage = file.type.startsWith('image/');
 
-    if (!isVideo && !isImage) {
-      toast.error('Please select an image or video');
-      e.target.value = '';
-      return;
-    }
+                  if (!isVideo && !isImage) {
+                    toast.error('Please select an image or video');
+                    e.target.value = '';
+                    return;
+                  }
 
-    // Store file separately
-    setFooterLogoFile(file);
+                  // Store file separately
+                  setFooterLogoFile(file);
 
-    // Update preview
-    setFooterIsVideo(isVideo);
-    setFooterPreview(URL.createObjectURL(file));
-  }}
-/>
+                  // Update preview
+                  setFooterIsVideo(isVideo);
+                  setFooterPreview(URL.createObjectURL(file));
+                }}
+              /> */}
+
+                   <CFormInput
+                type="file"
+                accept="video/mp4,video/webm,video/ogg,video/quicktime"
+                {...register('footerLogo')}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+
+                  if (file) {
+                    if (!file.type.startsWith('video/')) {
+                      toast.error('Please select a video file');
+                      e.target.value = '';
+                      setValue('footerLogo', null);
+                      return;
+                    }
+
+                    setValue('footerLogo', e.target.files, {
+                      shouldValidate: true,
+                    });
+
+                    setFooterIsVideo(true);
+                    setFooterPreview(URL.createObjectURL(file));
+                  }
+                }}
+              />
 
               <small className="text-muted">
                 Supported: JPG, PNG, WebP, AVIF, MP4, WebM
