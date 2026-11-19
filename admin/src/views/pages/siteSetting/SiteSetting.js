@@ -147,10 +147,8 @@ const SiteSetting = () => {
       if (data.headerLogo?.[0]) {
         formData.append('headerLogo', data.headerLogo[0])
       }
-
-      if (data.footerLogo?.[0]) {
-
-        formData.append('footerLogo', data.footerLogo[0]);
+      if (footerLogoFile) {
+        formData.append("footerLogo", footerLogoFile);
       }
 
       if (data.favicon?.[0]) {
@@ -168,11 +166,16 @@ const SiteSetting = () => {
       const result = await res.json()
 
       if (result.success) {
-        toast.success('Site Setting Updated Successfully')
-        getSiteSetting()
+        toast.success("Site Setting Updated Successfully");
+
+        setFooterLogoFile(null);
+
+        await getSiteSetting();
       } else {
-        toast.error(result.message)
+        toast.error(result.message || "Failed to update settings");
       }
+
+
     } catch (err) {
       toast.error('Something went wrong')
     } finally {
@@ -410,10 +413,10 @@ const SiteSetting = () => {
 
 
 
+
               <CFormInput
                 type="file"
                 accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
-                {...register("footerLogo")}
                 onChange={(e) => {
                   const file = e.target.files?.[0];
 
@@ -423,20 +426,24 @@ const SiteSetting = () => {
                   const isImage = file.type.startsWith("image/");
 
                   if (!isVideo && !isImage) {
-                    toast.error("Please select an image or video");
+                    toast.error("Please select a valid image or video");
                     e.target.value = "";
-                    setValue("footerLogo", null);
                     return;
                   }
 
-                  setValue("footerLogo", e.target.files, {
-                    shouldValidate: true,
-                  });
+                  // Store actual file separately
+                  setFooterLogoFile(file);
 
+                  // Update preview
                   setFooterIsVideo(isVideo);
                   setFooterPreview(URL.createObjectURL(file));
                 }}
               />
+
+              <small className="text-muted">
+                Supported: JPG, PNG, WebP, AVIF, GIF, MP4, WebM, MOV
+              </small>
+
 
               <small className="text-muted">
                 Supported: JPG, PNG, WebP, AVIF, GIF, MP4, WebM, MOV
