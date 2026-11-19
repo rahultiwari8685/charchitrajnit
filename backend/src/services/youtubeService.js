@@ -217,7 +217,7 @@ export const getLatestYouTubeVideos = async () => {
 
             playlistId: uploadsPlaylistId,
 
-            maxResults: 5,
+            maxResults: 20,
 
             key: process.env.YOUTUBE_API_KEY,
           },
