@@ -11,80 +11,33 @@ let videosLastFetch = 0;
 
 const YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3";
 
+// const YOUTUBE_CHANNELS = [
+//   {
+//     name: "Charchit Rajnit Nation",
+//     channelId: "UC0lg7tqrUdlky_u1Wug7uEw",
+//   },
+//   {
+//     name: "Charchit Rajnit Regional",
+//     channelId: "UC7_OlirbGWvmG0-0Nc3WedA",
+//   },
+//   {
+//     name: "Charchit Rajnit Entertainment",
+//     channelId: "UCkJQAejO5Zx1TaQzzA_3Hvg",
+//   },
+//   {
+//     name: "Charchit Rajnit Express",
+//     channelId: "UCygk_AnahPPNje9H3NLK1tA",
+//   },
+// ];
+
 const YOUTUBE_CHANNELS = [
   {
-    name: "Charchit Rajnit Nation",
-    channelId: "UC0lg7tqrUdlky_u1Wug7uEw",
-  },
-  {
-    name: "Charchit Rajnit Regional",
-    channelId: "UC7_OlirbGWvmG0-0Nc3WedA",
-  },
-  {
-    name: "Charchit Rajnit Entertainment",
-    channelId: "UCkJQAejO5Zx1TaQzzA_3Hvg",
-  },
-  {
-    name: "Charchit Rajnit Express",
-    channelId: "UCygk_AnahPPNje9H3NLK1tA",
+    name: "Charchit Rajnit",
+    channelId: "UCRtpIFOvdXyrWl0hlJvtjow",
   },
 ];
 
-// export const checkLiveStatus = async () => {
-//   if (!process.env.YOUTUBE_API_KEY || !process.env.YOUTUBE_CHANNEL_ID) {
-//     console.error("Missing YouTube config");
 
-//     return {
-//       isLive: false,
-//     };
-//   }
-
-//   const now = Date.now();
-
-//   if (liveCache && now - liveLastFetch < 60000) {
-//     return liveCache;
-//   }
-
-//   try {
-//     const res = await axios.get(`${YOUTUBE_API_URL}/search`, {
-//       timeout: 5000,
-//       params: {
-//         part: "snippet",
-//         channelId: process.env.YOUTUBE_CHANNEL_ID,
-//         eventType: "live",
-//         type: "video",
-//         key: process.env.YOUTUBE_API_KEY,
-//       },
-//     });
-
-//     let result = {
-//       isLive: false,
-//     };
-
-//     if (res?.data?.items?.length > 0) {
-//       const liveVideo = res.data.items[0];
-
-//       result = {
-//         isLive: true,
-//         videoId: liveVideo.id?.videoId,
-//         title: liveVideo.snippet?.title,
-//       };
-//     }
-
-//     liveCache = result;
-//     liveLastFetch = now;
-
-//     return result;
-//   } catch (err) {
-//     console.error("YouTube Live API error:", err.message);
-
-//     return (
-//       liveCache || {
-//         isLive: false,
-//       }
-//     );
-//   }
-// };
 
 
 export const checkLiveStatus = async () => {
@@ -110,8 +63,7 @@ export const checkLiveStatus = async () => {
 
   const now = Date.now();
 
-  // Reuse the previous result to reduce YouTube API quota usage.
-  // The cache duration below is 60 minutes.
+ 
   if (liveCache && now - liveLastFetch < 60 * 60 * 1000) {
     return liveCache;
   }
