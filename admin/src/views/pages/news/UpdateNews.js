@@ -632,7 +632,7 @@ const UpdateNews = () => {
                     <label className="form-label fw-semibold">Hindi Content</label>
 
                     <Editor
-                      apiKey="iug8g892lljsn0xjpc2gsqmoazb2bvm0zwr3zocvqzelk9dt"
+                      apiKey="okwya9fvn8y65h8ufs9cpsvbv2a4yo789vbfvbfr3rkfjp32"
                       value={content}
                       onEditorChange={(newValue) => {
                         setContent(newValue)
