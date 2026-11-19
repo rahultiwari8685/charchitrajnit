@@ -408,39 +408,40 @@ const SiteSetting = () => {
                 }}
               /> */}
 
-                 
-<CFormInput
-  type="file"
-  accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
-  {...register('footerLogo')}
-  onChange={(e) => {
-    const file = e.target.files?.[0];
 
-    if (!file) return;
 
-    const isVideo = file.type.startsWith('video/');
-    const isImage = file.type.startsWith('image/');
+              <CFormInput
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/ogg,video/quicktime"
+                {...register("footerLogo")}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
 
-    if (!isVideo && !isImage) {
-      toast.error('Please select an image or video');
-      e.target.value = '';
-      setValue('footerLogo', null);
-      return;
-    }
+                  if (!file) return;
 
-    setValue('footerLogo', e.target.files, {
-      shouldValidate: true,
-    });
+                  const isVideo = file.type.startsWith("video/");
+                  const isImage = file.type.startsWith("image/");
 
-    setFooterIsVideo(isVideo);
-    setFooterPreview(URL.createObjectURL(file));
-  }}
-/>
+                  if (!isVideo && !isImage) {
+                    toast.error("Please select an image or video");
+                    e.target.value = "";
+                    setValue("footerLogo", null);
+                    return;
+                  }
 
+                  setValue("footerLogo", e.target.files, {
+                    shouldValidate: true,
+                  });
+
+                  setFooterIsVideo(isVideo);
+                  setFooterPreview(URL.createObjectURL(file));
+                }}
+              />
 
               <small className="text-muted">
-                Supported: JPG, PNG, WebP, AVIF, MP4, WebM
+                Supported: JPG, PNG, WebP, AVIF, GIF, MP4, WebM, MOV
               </small>
+
             </CCol>
 
             <CCol md={6}>
