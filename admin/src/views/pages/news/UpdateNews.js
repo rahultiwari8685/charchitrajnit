@@ -75,7 +75,8 @@ const UpdateNews = () => {
       youtubeUrl: '',
       videoFile: null,
       thumbnail: null,
-        thumbnailCaption: '',
+      thumbnailCaption: '',
+      scheduledAt: '',
     },
   })
 
@@ -155,6 +156,21 @@ const UpdateNews = () => {
     setValue('categories', newCategories, {
       shouldDirty: true,
     })
+  }
+
+
+  const formatDateTimeLocal = (date) => {
+    if (!date) return ''
+
+    const parsedDate = new Date(date)
+
+    if (Number.isNaN(parsedDate.getTime())) return ''
+
+    const offset = parsedDate.getTimezoneOffset() * 60000
+
+    return new Date(parsedDate.getTime() - offset)
+      .toISOString()
+      .slice(0, 16)
   }
 
   const getYouTubeId = (url) => {
@@ -240,7 +256,8 @@ const UpdateNews = () => {
         videoFile: null,
 
         thumbnail: null,
-         thumbnailCaption: selected.thumbnailCaption || '',
+        thumbnailCaption: selected.thumbnailCaption || '',
+        scheduledAt: formatDateTimeLocal(selected.scheduledAt),
       })
 
       /*
@@ -320,74 +337,45 @@ const UpdateNews = () => {
     try {
       const formData = new FormData()
 
-      /*
-       * News ID
-       */
-
       formData.append('id', id)
-
-      /*
-       * Hindi source title
-       */
 
       formData.append('title', data.title || '')
 
-      /*
-       * Hindi source subtitle
-       */
-
       formData.append('sub_title', data.subtitle || '')
-
-      /*
-       * News type
-       */
 
       formData.append('video_type', data.videoType || '')
 
-      /*
-       * Status
-       */
-
       formData.append('type', data.type || '')
 
-      /*
-       * Slug
-       */
+      // Schedule date and time
+      if (data.type === '3' && !data.scheduledAt) {
+        toast.error('Please select schedule date & time')
+        setLoading(false)
+        return
+      }
+
+      formData.append(
+        'scheduledAt',
+        data.type === '3' && data.scheduledAt
+          ? new Date(data.scheduledAt).toISOString()
+          : ''
+      )
+
 
       formData.append('slug', data.slug || '')
 
-      /*
-       * Categories
-       */
-
       formData.append('categories', JSON.stringify(data.categories || []))
       formData.append('thumbnailCaption', data.thumbnailCaption || '')
-
-      /*
-       * Hindi content
-       */
 
       if (data.videoType === '2') {
         formData.append('content', content || '')
       }
 
-      /*
-       * YouTube URL
-       */
 
       if (data.videoType === '1') {
         formData.append('youtube_url', data.youtubeUrl || '')
       }
 
-      /*
-       * Hindi translation object.
-       *
-       * This tells the backend that Hindi
-       * is the source language.
-       *
-       * Backend will regenerate the other
-       * languages using Google Translate.
-       */
 
       formData.append(
         'translations',
@@ -402,17 +390,10 @@ const UpdateNews = () => {
         }),
       )
 
-      /*
-       * New thumbnail
-       */
 
       if (data.thumbnail?.[0]) {
         formData.append('thumbnail', data.thumbnail[0])
       }
-
-      /*
-       * Update API
-       */
 
       const response = await fetch(`${setting.api}/api/news/updateNews`, {
         method: 'POST',
@@ -434,17 +415,23 @@ const UpdateNews = () => {
         return
       }
 
-      /*
-       * Success
-       */
 
-      toast.success('News Updated Successfully!')
 
-      /*
-       * Navigate back.
-       */
+      toast.success(
+        data.type === '3'
+          ? 'Scheduled News Updated Successfully!'
+          : data.type === '2'
+            ? 'Draft Updated Successfully!'
+            : 'News Updated Successfully!'
+      )
 
-      navigate('/PublishedNews')
+      navigate(
+        data.type === '3'
+          ? '/ScheduleNews'
+          : data.type === '2'
+            ? '/DraftNews'
+            : '/PublishedNews'
+      )
     } catch (error) {
       console.error('Update news error:', error)
 
@@ -463,11 +450,7 @@ const UpdateNews = () => {
           </CCardHeader>
 
           <CCardBody>
-            {/* <div className="alert alert-info mb-4">
-              <strong>Automatic Translation:</strong> Hindi is the source language. English,
-              Bengali, Marathi and Tamil translations are generated automatically when the news is
-              updated.
-            </div> */}
+
 
             <CForm onSubmit={handleSubmit(updateNews)}>
               <CRow className="mb-3">
@@ -539,9 +522,9 @@ const UpdateNews = () => {
                     <CDropdownToggle color="secondary">
                       {formDataValues.categories?.length > 0
                         ? categoriesList
-                            .filter((category) => formDataValues.categories.includes(category._id))
-                            .map((category) => category.name)
-                            .join(', ')
+                          .filter((category) => formDataValues.categories.includes(category._id))
+                          .map((category) => category.name)
+                          .join(', ')
                         : 'Select Categories'}
                     </CDropdownToggle>
 
@@ -598,6 +581,13 @@ const UpdateNews = () => {
 
                   {errors.type && <small className="text-danger">{errors.type.message}</small>}
                 </CCol>
+                <CCol md={6}>
+                  <CFormInput
+                    type="datetime-local"
+                    label="Schedule Publish Date & Time"
+                    {...register('scheduledAt')}
+                  />
+                </CCol>
 
                 <CCol md={6}>
                   <CFormSelect
@@ -624,9 +614,7 @@ const UpdateNews = () => {
                 </CCol>
               </CRow>
 
-              {/* ===================================================
-                  YOUTUBE URL
-              ==================================================== */}
+
 
               {formDataValues.videoType === '1' && (
                 <CFormInput
@@ -637,10 +625,6 @@ const UpdateNews = () => {
                   className="mb-4"
                 />
               )}
-
-              {/* ===================================================
-                  HINDI CONTENT
-              ==================================================== */}
 
               {formDataValues.videoType === '2' && (
                 <>
@@ -711,9 +695,6 @@ const UpdateNews = () => {
                     />
                   </div>
 
-                  {/* =================================================
-                      THUMBNAIL
-                  ================================================== */}
 
                   <CCol md={12} className="mb-4">
                     <CFormInput
@@ -723,12 +704,12 @@ const UpdateNews = () => {
                       {...register('thumbnail')}
                     />
                     <CFormInput
-  type="text"
-  label="Thumbnail Caption"
-  placeholder="Enter image caption"
-  className="mt-3"
-  {...register('thumbnailCaption')}
-/>
+                      type="text"
+                      label="Thumbnail Caption"
+                      placeholder="Enter image caption"
+                      className="mt-3"
+                      {...register('thumbnailCaption')}
+                    />
 
                     {/* New thumbnail */}
 
@@ -769,9 +750,6 @@ const UpdateNews = () => {
                 </>
               )}
 
-              {/* ===================================================
-                  ACTION BUTTON
-              ==================================================== */}
 
               <div className="d-flex justify-content-end mt-4">
                 <CButton color="primary" type="submit" disabled={loading}>
@@ -783,9 +761,6 @@ const UpdateNews = () => {
         </CCard>
       </CCol>
 
-      {/* =============================================================
-          LIVE PREVIEW
-      ============================================================= */}
 
       {formDataValues.videoType === '1' && (
         <CCol lg={4}>
