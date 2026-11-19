@@ -13,19 +13,19 @@ const YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3";
 
 const YOUTUBE_CHANNELS = [
   {
-    name: "Bharat 19 Express Nation",
+    name: "Charchit Rajnit Nation",
     channelId: "UC0lg7tqrUdlky_u1Wug7uEw",
   },
   {
-    name: "Bharat 19 Express Regional",
+    name: "Charchit Rajnit Regional",
     channelId: "UC7_OlirbGWvmG0-0Nc3WedA",
   },
   {
-    name: "Bharat 19 Entertainment",
+    name: "Charchit Rajnit Entertainment",
     channelId: "UCkJQAejO5Zx1TaQzzA_3Hvg",
   },
   {
-    name: "भारत 19 एक्सप्रेस",
+    name: "Charchit Rajnit Express",
     channelId: "UCygk_AnahPPNje9H3NLK1tA",
   },
 ];
