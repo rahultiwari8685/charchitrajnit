@@ -215,8 +215,8 @@ const WidgetTrendingNews = ({ dark }) => {
 
   if (news.length === 0) return null;
 
-  const firstNews = news.slice(0, 4);
-  const otherNews = news.slice(4, 10);
+  const firstNews = news[0];
+  const otherNews = news.slice(1);
 
   return (
     <div className="trending_widget mb30">
