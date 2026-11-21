@@ -194,7 +194,7 @@ const FooterAreaTwo = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-6 col-lg-4">
-            <div className="single_footer3 mb30">
+            <div className="single_footer3">
               {/* LOGO */}
               <div className="logo">
                 <Link to="/">
@@ -296,11 +296,11 @@ const FooterAreaTwo = () => {
             <div className="space-30" /> */}
 
              <div className="download_btn">
-              {/* <div className="space-15" />
+              <div className="space-15" />
 
               <div className="border_black" />
 
-              <div className="space-15" /> */}
+              <div className="space-15" />
 
               <div className="row">
                 <div className="col-lg-6">
