@@ -195,7 +195,7 @@ const WidgetTrendingNews = ({ dark }) => {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `${API}/api/news/trending?limit=10&lang=${language}`,
+        `${API}/api/news/trending?limit=12&lang=${language}`,
       );
 
       const data = await res.json();

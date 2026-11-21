@@ -159,7 +159,7 @@ function Category() {
       const language = i18n.resolvedLanguage || "en";
 
       const res = await fetch(
-        `${API}/api/news/category/${categoryId}?page=1&limit=10&lang=${language}`,
+        `${API}/api/news/category/${categoryId}?page=1&limit=22&lang=${language}`,
       );
 
       const data = await res.json();
@@ -203,7 +203,7 @@ function Category() {
 
   return (
     <>
-      <BreadCrumb title={categoryName} />
+      {/* <BreadCrumb title={categoryName} /> */}
 
       <div className="archives padding-top-30">
         <div className="container">
@@ -244,7 +244,7 @@ function Category() {
         </div>
       </div>
 
-      <div className="space-70" />
+      {/* <div className="space-70" /> */}
 
       <BannerSection />
     </>

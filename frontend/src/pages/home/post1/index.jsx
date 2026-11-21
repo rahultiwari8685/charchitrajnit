@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-
 import { Link, useParams } from "react-router-dom";
 import BreadCrumb from "../../../component/BreadCrumb";
 import FontAwesome from "../../../component/uiStyle/FontAwesome";
+import { FaInstagram } from "react-icons/fa";
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-  TelegramShareButton,
   LinkedinShareButton,
   RedditShareButton,
   EmailShareButton,
   FacebookIcon,
   TwitterIcon,
   WhatsappIcon,
-  TelegramIcon,
+
   LinkedinIcon,
   RedditIcon,
   EmailIcon,
@@ -192,6 +191,28 @@ function Post1() {
     }
   };
 
+  const handleInstagramShare = async () => {
+    // Open Instagram
+    window.open(
+      "https://www.instagram.com/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    try {
+      await navigator.clipboard.writeText(
+        `${shareTitle}\n${shareUrl}`
+      );
+
+      await increaseShare();
+
+      alert("News link copied! You can now share it on Instagram.");
+    } catch (error) {
+      console.error("Instagram share error:", error);
+      alert("Unable to copy news link. Please copy it manually.");
+    }
+  };
+
   return (
     <>
       <div className="archives post post1">
@@ -295,14 +316,26 @@ function Post1() {
                     <WhatsappIcon size={42} round />
                   </WhatsappShareButton>
 
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={shareTitle}
-                    onClick={increaseShare}
-                    aria-label="Share on Telegram"
+                  <button
+                    type="button"
+                    onClick={handleInstagramShare}
+                    aria-label="Share on Instagram"
+                    title="Share on Instagram"
+                    style={{
+                      width: 42,
+                      height: 42,
+                      borderRadius: "50%",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "none",
+                      background: "linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5)",
+                      color: "#fff",
+                      cursor: "pointer",
+                    }}
                   >
-                    <TelegramIcon size={42} round />
-                  </TelegramShareButton>
+                    <FaInstagram size={25} />
+                  </button>
                 </div>
               </div>
 
@@ -358,7 +391,7 @@ function Post1() {
                 </div>
               )}
 
-              <div className="tags">
+              {/* <div className="tags">
                 <ul className="inline">
                   <li className="tag_list">
                     <FontAwesome name="tag" /> {t("categories")}
@@ -376,7 +409,7 @@ function Post1() {
               <div className="border_black" />
               <div className="space-40" />
 
-              <PostOnePagination newsId={news._id} />
+              <PostOnePagination newsId={news._id} /> */}
             </div>
 
             <div className="col-md-6 col-lg-4">
