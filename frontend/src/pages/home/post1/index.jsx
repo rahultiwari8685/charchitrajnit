@@ -416,9 +416,8 @@ function Post1() {
               <WidgetTab categoryId={news.categories?.[0]?._id} />
 
               <FollowUs title="Follow Us" />
-              <WidgetTrendingNews />
 
-              <div className="banner2 mb30">
+     <div className="banner2 mb30">
                 {banners.sidebar && (
                   <a
                     href={banners.sidebar.redirectUrl}
@@ -433,6 +432,10 @@ function Post1() {
                   </a>
                 )}
               </div>
+
+              <WidgetTrendingNews />
+
+         
             </div>
           </div>
 
