@@ -198,16 +198,7 @@ const FooterAreaTwo = () => {
               {/* LOGO */}
               <div className="logo">
                 <Link to="/">
-                  {/* {footerLogo ? (
-                    <img
-                      src={footerLogo}
-                      alt={settings?.siteName || "Charchit Rajnit"}
-                    />
-                  ) : (
-                    <h3>{settings?.siteName || "Charchit Rajnit"}</h3>
-                  )} */}
-
-
+            
 
                   {footerLogo ? (
                     isFooterVideo ? (
@@ -304,7 +295,7 @@ const FooterAreaTwo = () => {
             {/* <div className="space-30" />
             <div className="space-30" /> */}
 
-            {/* <div className="download_btn">
+             <div className="download_btn">
               <div className="space-15" />
 
               <div className="border_black" />
@@ -343,7 +334,7 @@ const FooterAreaTwo = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div> 
           </div>
         </div>
       </div>
