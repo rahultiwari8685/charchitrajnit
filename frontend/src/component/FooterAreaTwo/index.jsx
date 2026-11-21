@@ -305,7 +305,7 @@ const FooterAreaTwo = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <h3 className="widget-title">
-                    charchitrajnit app download
+                    charchit Rajnit app download
                   </h3>
 
                   <p>
