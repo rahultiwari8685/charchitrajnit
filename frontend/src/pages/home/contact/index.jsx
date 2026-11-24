@@ -103,7 +103,7 @@ class Contact extends Component {
                     </div>
                     <p>LOCATION:</p>
                     <h6>
-                      08, LDA Marketing Complex, Rail Nagar, Sector-J, Ashiyana, Lucknow–226012, Uttar Pradesh
+                    D-206 C, Vibhuti khand Gomti Nagar Lucknow
                     </h6>
                   </div>
                 </div>
@@ -139,7 +139,8 @@ class Contact extends Component {
                 >
                   <iframe
                     title="Charchit Rajnit Office Location"
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d7122.551661420581!2d80.91643676642067!3d26.799344524631543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDQ3JzU1LjciTiA4MMKwNTUnMTguMSJF!5e0!3m2!1sen!2sin!4v1791558691962!5m2!1sen!2sin"
+                   
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d56937.9892982116!2d80.92866796953123!3d26.883674155284098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1795525437115!5m2!1sen!2sin"
                     width="100%"
                     height="450"
                     style={{

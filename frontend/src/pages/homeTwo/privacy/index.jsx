@@ -21,7 +21,7 @@ function Privacy() {
               </p>
             </header>
 
-            <p>
+            {/* <p>
               Charchit Rajnit, a media initiative of Page 19 Express Media
               &amp; Advertisement Private Limited (&quot;Company&quot;,
               &quot;we&quot;, &quot;us&quot; or &quot;our&quot;), respects the
@@ -34,7 +34,7 @@ function Privacy() {
                 www.charchitrajnit.com
               </a>
               .
-            </p>
+            </p> */}
 
             <p>
               This Privacy Policy explains how we may collect, use, store, share
@@ -270,13 +270,12 @@ function Privacy() {
             <section>
               <h2>13. Contact Information</h2>
               <div className="privacy-contact">
-                <h3>
+                {/* <h3>
                   Page 19 Express Media &amp; Advertisement Private Limited
-                </h3>
+                </h3> */}
 
                 <p>
-                  Shop No. 08, Rail Nagar, Sector-J, Lucknow, Uttar Pradesh –
-                  226012, India
+                 D-206 C, Vibhuti khand Gomti Nagar Lucknow
                 </p>
 
                 <p>

@@ -26,12 +26,12 @@ function About() {
               journalism.
             </p>
 
-            <p>
-              Charchit Rajnit is a media initiative of Page 19 Express Media
+            {/* <p>
+              Charchit Rajnit is a media initiative of Page
               &amp; Advertisement Private Limited. Our objective is to inform,
               educate and engage audiences through credible news reporting,
               meaningful analysis and public-interest journalism.
-            </p>
+            </p> */}
 
             <p>
               With a strong focus on Uttar Pradesh and coverage of important
@@ -231,10 +231,10 @@ function About() {
               <div className="about-contact-card">
                 <h3>Charchit Rajnit</h3>
 
-                <p>
+                {/* <p>
                   A media initiative of Page 19 Express Media &amp;
                   Advertisement Private Limited
-                </p>
+                </p> */}
 
                 <p>
                   <strong>Website:</strong>{" "}
