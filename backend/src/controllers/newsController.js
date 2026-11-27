@@ -6,6 +6,13 @@ import { sendNotification } from "../services/sendNotification.js";
 import NotificationToken from "../models/NotificationToken.js";
 import { TranslationServiceClient } from "@google-cloud/translate";
 
+
+// Convert datetime-local input into a proper India Standard Time date
+const parseISTDateTime = (value) => {
+  if (!value) return null;
+  return new Date(`${value}+05:30`);
+};
+
 const SUPPORTED_LANGUAGES = ["en", "hi", "ur", "bn", "mr"];
 
 const TRANSLATION_TARGETS = ["en", "ur", "bn", "mr"];
@@ -184,11 +191,9 @@ export const createNews = async (req, res) => {
       .filter((id) => mongoose.Types.ObjectId.isValid(id))
       .map((id) => new mongoose.Types.ObjectId(id));
 
-    let scheduledDate = null;
+   
 
-    if (scheduledAt) {
-      scheduledDate = new Date(new Date(scheduledAt).getTime() - 19800000);
-    }
+ const scheduledDate = parseISTDateTime(scheduledAt);
 
     const existingNews = await News.findOne({
       title: title.trim(),
@@ -273,9 +278,11 @@ export const createNews = async (req, res) => {
 
       type: Number(type),
 
-      scheduledAt: scheduledDate,
+  scheduledAt: Number(type) === 3 ? scheduledDate : null,
 
-      isScheduled: Number(type) === 3,
+publishedAt: Number(type) === 1 ? new Date() : null,
+
+isScheduled: Number(type) === 3,
 
       thumbnail: req.file?.filename || "",
       thumbnailCaption: thumbnailCaption || '',
@@ -698,11 +705,7 @@ export const updateNews = async (req, res) => {
 
     console.log("========================================");
 
-    let scheduledDate = null;
-
-    if (scheduledAt) {
-      scheduledDate = new Date(new Date(scheduledAt).getTime() - 19800000);
-    }
+   const scheduledDate = parseISTDateTime(scheduledAt);
 
     news.title = title || "";
 
@@ -723,13 +726,24 @@ export const updateNews = async (req, res) => {
       news.slug = slug.trim();
     }
 
-    if (type !== undefined) {
-      news.type = Number(type);
+  if (type !== undefined) {
+  const newType = Number(type);
 
-      news.isScheduled = Number(type) === 3;
-    }
+  // Set publication date only when the news becomes published
+  if (newType === 1 && news.type !== 1 && !news.publishedAt) {
+    news.publishedAt = new Date();
+  }
 
+  news.type = newType;
+  news.isScheduled = newType === 3;
+
+  // Clear scheduled date when it is no longer scheduled
+  if (newType !== 3) {
+    news.scheduledAt = null;
+  } else {
     news.scheduledAt = scheduledDate;
+  }
+}
 
     if (req.file) {
       news.thumbnail = req.file.filename;

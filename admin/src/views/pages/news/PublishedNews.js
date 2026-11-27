@@ -44,6 +44,32 @@ const PublishedNews = () => {
 
   const userRole = loginInfo.role || ''
 
+  const getNewsDate = (news) => {
+    const value = news.publishedAt || news.createdAt
+
+    if (!value) return null
+
+    const date = new Date(value)
+
+    return Number.isNaN(date.getTime()) ? null : date
+  }
+
+  const formatNewsDate = (news) => {
+    const date = getNewsDate(news)
+
+    if (!date) return '-'
+
+    return date.toLocaleString('en-IN', {
+      timeZone: 'Asia/Kolkata',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    })
+  }
+
   console.log('User role from storage:', userRole)
 
   const fetchNews = async () => {
@@ -72,7 +98,7 @@ const PublishedNews = () => {
       const currentUserId = String(loginInfo?.user?.id || '')
 
       const filteredNews = (data.data || []).filter((item) => {
-        const newsDate = new Date(item.createdAt)
+        const newsDate = getNewsDate(item)
 
         const isPublished = Number(item.type) === 1
         const isWithinOneMonth = newsDate >= oneMonthAgo
@@ -185,11 +211,18 @@ const PublishedNews = () => {
     const categoryMatch =
       !selectedCategory || news.categories?.some((cat) => cat._id === selectedCategory)
 
-    const newsDate = new Date(news.createdAt)
+    const newsDate = getNewsDate(news)
+    const fromDateValue = fromDate
+      ? new Date(`${fromDate}T00:00:00+05:30`)
+      : null
 
-    const fromMatch = !fromDate || newsDate >= new Date(fromDate)
+    const toDateValue = toDate
+      ? new Date(`${toDate}T23:59:59.999+05:30`)
+      : null
 
-    const toMatch = !toDate || newsDate <= new Date(new Date(toDate).setHours(23, 59, 59))
+    const fromMatch = !fromDateValue || (newsDate && newsDate >= fromDateValue)
+
+    const toMatch = !toDateValue || (newsDate && newsDate <= toDateValue)
 
     return titleMatch && authorMatch && categoryMatch && fromMatch && toMatch
   })
@@ -312,16 +345,8 @@ const PublishedNews = () => {
 
                   <CTableDataCell> {news.author?.name || 'N/A'}</CTableDataCell>
 
-                  <CTableDataCell>
-                    {new Date(news.createdAt).toLocaleString('en-IN', {
-                      timeZone: 'Asia/Kolkata',
-                      day: '2-digit',
-                      month: 'short',
-                      year: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                      hour12: true,
-                    })}
+                  <CTableDataCell className="text-nowrap fw-semibold">
+                    {formatNewsDate(news)}
                   </CTableDataCell>
 
                   <CTableDataCell>{news.views || 0}</CTableDataCell>

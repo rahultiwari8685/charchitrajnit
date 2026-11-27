@@ -98,6 +98,11 @@ const newsSchema = new mongoose.Schema(
       default: null,
     },
 
+    publishedAt: {
+  type: Date,
+  default: null,
+},
+
     views: {
       type: Number,
       default: 0,

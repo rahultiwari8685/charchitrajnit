@@ -109,7 +109,7 @@ const News = () => {
       title: '',
       subtitle: '',
       description: '',
-        thumbnailCaption: '',
+      thumbnailCaption: '',
       slug: '',
       categories: [],
       videoType: '',
@@ -448,9 +448,9 @@ const News = () => {
                     <CDropdownToggle color="secondary">
                       {formDataValues.categories.length > 0
                         ? categoriesList
-                            .filter((cat) => formDataValues.categories.includes(cat._id))
-                            .map((cat) => cat.name)
-                            .join(', ')
+                          .filter((cat) => formDataValues.categories.includes(cat._id))
+                          .map((cat) => cat.name)
+                          .join(', ')
                         : 'Select Categories'}
                     </CDropdownToggle>
                     <CDropdownMenu>
@@ -519,148 +519,6 @@ const News = () => {
                                 }
                                 `}
                         </style>
-
-                        {/* <CKEditor
-                          editorUrl="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"
-                          initData={content}
-                          onChange={(event) => {
-                            const html = event.editor.getData()
-
-                            setContent(html)
-
-                            setValue('description', html, {
-                              shouldValidate: true,
-                              shouldDirty: true,
-                            })
-                          }}
-                          config={{
-                            versionCheck: false,
-                            height: 400,
-                            allowedContent: true,
-                            autoParagraph: false,
-                            removePlugins: 'resize,elementspath',
-                            extraPlugins: 'font,colorbutton,justify',
-                            disableNativeSpellChecker: false,
-                            toolbarCanCollapse: false,
-
-                            toolbar: [
-                              {
-                                name: 'styles',
-                                items: ['Styles', 'Format', 'Font', 'FontSize'],
-                              },
-                              {
-                                name: 'basicstyles',
-                                items: ['Bold', 'Italic', 'Underline', 'Strike'],
-                              },
-                              {
-                                name: 'paragraph',
-                                items: [
-                                  'NumberedList',
-                                  'BulletedList',
-                                  'JustifyLeft',
-                                  'JustifyCenter',
-                                  'JustifyRight',
-                                ],
-                              },
-                              {
-                                name: 'insert',
-                                items: ['Image', 'Table'],
-                              },
-                              {
-                                name: 'links',
-                                items: ['Link', 'Unlink'],
-                              },
-                            ],
-                          }}
-                        /> */}
-
-                        {/* <CKEditor
-                          editorUrl="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"
-                          initData={content}
-                          onChange={(event) => {
-                            const html = event.editor.getData()
-
-                            setContent(html)
-
-                            setValue('description', html, {
-                              shouldValidate: true,
-                              shouldDirty: true,
-                            })
-                          }}
-                          config={{
-                            versionCheck: false,
-                            height: 500,
-                            allowedContent: true,
-
-                            uploadUrl: `${setting.api}/api/upload/ckeditor`,
-                            filebrowserUploadUrl: `${setting.api}/api/upload/ckeditor`,
-                            filebrowserUploadMethod: 'form',
-
-                            toolbar: [
-                              {
-                                name: 'clipboard',
-                                items: [
-                                  'Undo',
-                                  'Redo',
-                                  'Cut',
-                                  'Copy',
-                                  'Paste',
-                                  'PasteText',
-                                  'PasteFromWord',
-                                ],
-                              },
-                              {
-                                name: 'styles',
-                                items: ['Format', 'Font', 'FontSize'],
-                              },
-                              {
-                                name: 'basicstyles',
-                                items: [
-                                  'Bold',
-                                  'Italic',
-                                  'Underline',
-                                  'Strike',
-                                  'Subscript',
-                                  'Superscript',
-                                  'RemoveFormat',
-                                ],
-                              },
-                              {
-                                name: 'paragraph',
-                                items: [
-                                  'NumberedList',
-                                  'BulletedList',
-                                  'Outdent',
-                                  'Indent',
-                                  'Blockquote',
-                                  'JustifyLeft',
-                                  'JustifyCenter',
-                                  'JustifyRight',
-                                  'JustifyBlock',
-                                ],
-                              },
-                              {
-                                name: 'insert',
-                                items: [
-                                  'UploadImage',
-                                  'Image',
-                                  'Table',
-                                  'HorizontalRule',
-                                  'SpecialChar',
-                                ],
-                              },
-                              {
-                                name: 'links',
-                                items: ['Link', 'Unlink', 'Anchor'],
-                              },
-                              {
-                                name: 'document',
-                                items: ['Source', 'Maximize'],
-                              },
-                            ],
-                          }}
-                        
-                        /> */}
 
                         <Editor
                           apiKey="okwya9fvn8y65h8ufs9cpsvbv2a4yo789vbfvbfr3rkfjp32"
@@ -734,27 +592,21 @@ const News = () => {
                         )}
 
                         <CCol md={12} className="mb-3">
-                          {/* <CFormInput
+
+                          <CFormInput
                             type="file"
                             label="Thumbnail"
                             accept="image/*"
                             {...register('thumbnail')}
-                          /> */}
+                          />
 
-<CFormInput
-  type="file"
-  label="Thumbnail"
-  accept="image/*"
-  {...register('thumbnail')}
-/>
-
-<CFormInput
-  type="text"
-  label="Thumbnail Caption"
-  placeholder="Enter image caption"
-  className="mt-3"
-  {...register('thumbnailCaption')}
-/>
+                          <CFormInput
+                            type="text"
+                            label="Thumbnail Caption"
+                            placeholder="Enter image caption"
+                            className="mt-3"
+                            {...register('thumbnailCaption')}
+                          />
 
 
                           {errors.thumbnail && (
@@ -802,17 +654,6 @@ const News = () => {
               )}
 
               <div className="d-flex justify-content-end mt-4">
-                {/* <CButton
-                  color="primary"
-                  type="button"
-                  disabled={loading}
-                  onClick={() => {
-                    setValue('type', '1')
-                    handleSubmit(saveNews)()
-                  }}
-                >
-                  {loading ? 'Saving...' : 'Publish'}
-                </CButton> */}
 
                 <div className="d-flex gap-2 justify-content-end flex-wrap">
                   <CButton
@@ -855,24 +696,6 @@ const News = () => {
                     </CButton>
                   )}
 
-                  {/* <CButton
-                    color="info"
-                    type="button"
-                    disabled={loading}
-                    onClick={() => {
-                      setValue('type', '3')
-                      handleSubmit(saveNews)()
-                    }}
-                  >
-                    {loading ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2" />
-                        {uploadProgress >= 100 ? 'Processing...' : `${uploadProgress}%`}
-                      </>
-                    ) : (
-                      'Schedule'
-                    )}
-                  </CButton> */}
 
                   {userRole !== '3' && (
                     <CButton
@@ -895,24 +718,6 @@ const News = () => {
                     </CButton>
                   )}
 
-                  {/* <CButton
-                    color="primary"
-                    type="button"
-                    disabled={loading}
-                    onClick={() => {
-                      setValue('type', '1')
-                      handleSubmit(saveNews)()
-                    }}
-                  >
-                    {loading ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2" />
-                        {uploadProgress >= 100 ? 'Processing...' : `${uploadProgress}%`}
-                      </>
-                    ) : (
-                      'Publish Now'
-                    )}
-                  </CButton> */}
                 </div>
               </div>
             </CForm>
